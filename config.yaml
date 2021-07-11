@@ -1,0 +1,4 @@
+paths:
+  raw: "data/raw/"
+  proc: "data/processed/"
+  plots: "plots/"
