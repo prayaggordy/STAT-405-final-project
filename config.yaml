@@ -2,3 +2,6 @@ paths:
   raw: "data/raw/"
   proc: "data/processed/"
   plots: "plots/"
+
+data:
+  nyt_covid: "nyt_covid.csv"
