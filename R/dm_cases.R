@@ -16,5 +16,3 @@ download_nyt <- function(u = "https://raw.githubusercontent.com/nytimes/covid-19
 
 	df
 }
-
-cases <- download_nyt()
