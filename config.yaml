@@ -2,9 +2,9 @@ paths:
   raw: "data/raw/"
   proc: "data/processed/"
   plots: "plots/"
-  us_hr: "data/raw/us_data/hourly"
-  us_ts: "data/raw/us_data/time_series"
-  global_data: "data/raw/global_data"
+  us_hr: "data/raw/us_data/hourly/"
+  us_ts: "data/raw/us_data/time_series/"
+  global_data: "data/raw/global_data/"
 
 data:
   nyt_covid: "nyt_covid.csv"
