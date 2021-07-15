@@ -16,4 +16,3 @@ download_census <- function(u = "https://www2.census.gov/programs-surveys/cps/da
 
 	df
 }
-census <- download_census()
