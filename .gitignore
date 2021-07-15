@@ -4,4 +4,5 @@
 .Ruserdata
 *.csv
 *.png
+*.db
 county_cases.zip
