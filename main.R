@@ -1,4 +1,4 @@
-library(magrittr)
+library(magrittr); library(RSQLite)
 config <- yaml::read_yaml("config.yaml")
 sapply(list.files(path = "R", full.names = T), source, .GlobalEnv)
 
