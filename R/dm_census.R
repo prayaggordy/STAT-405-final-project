@@ -2,16 +2,16 @@ library(tidycensus)
 library(tidyverse)
 library(magrittr)
 
-download_census <- function(fn,
-														path_raw,
-														path_proc,
+download_census <- function(fn = config$data$census,
+														path_raw = config$paths$raw,
+														path_proc = config$paths$proc,
 														update = F) {
-
-	if (file.exists(fn_proc) & !update)
-		return(readr::read_csv(fn_proc))
 
 	fn_raw <- paste0(path_raw, fn)
 	fn_proc <- paste0(path_proc, fn)
+
+	if (file.exists(fn_proc) & !update)
+		return(readr::read_csv(fn_proc))
 
 	if (!file.exists(fn_raw) | update) {
 		df <- get_acs(geography = "county",
