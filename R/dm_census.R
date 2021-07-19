@@ -1,18 +1,24 @@
+library(tidycensus)
+library(tidyverse)
+library(dplyr)
 library(magrittr)
 
-config <- yaml::read_yaml("config.yaml")
+#census_api_key("9f4ab0bf5eb0ba86e6bcf3d14e14683c45956f5b", install=TRUE)
 
-download_census <- function(u = "https://www2.census.gov/programs-surveys/cps/datasets/2021/basic/jun21pub.csv",
-														fn = config$data$census,
-														path_raw = config$paths$raw,
-														path_proc = config$paths$proc,
-														update = F) {
+var <- load_variables(2019, "acs5", cache = TRUE)
 
-	df <- download_data(u = u,
-											fn_full = paste0(path_raw, fn),
-											update = update)
+acs19 <- get_acs(geography = "county",
+								 variables = c(medincome = "B19013_001", male="B01001_002", female="B01001_026",
+								 							medage="B01002_001", white="B01001A_001", black="B01001B_001",
+								 							hispanic="B01001I_001", asian="B01001D_001", total="B01001_001"),
+								 year = 2019,
+								 moe_level=95)
+acs19_subset <- acs19[, c("GEOID","NAME", "variable","estimate")]
+acs19_spread <- spread(acs19_subset, key = variable, value = estimate)
 
-	# this is where we do any data processing
+county_data <- mutate(acs19_spread, percent_asian=asian/total, percent_white=white/total,
+											percent_black=black/total, percent_hispanic=hispanic/total,
+											percent_male=male/total, percent_female=female/total,
+											percent_other=(total-white-black-asian-hispanic)/total)
 
-	df
-}
+
