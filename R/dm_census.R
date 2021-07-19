@@ -3,12 +3,12 @@ library(tidyverse)
 library(magrittr)
 
 acs19 <- get_acs(geography = "county",
-								 variables = c(medincome = "B19013_001", male="B01001_002", female="B01001_026",
-								 							medage="B01002_001", white="B01001A_001", black="B01001B_001",
-								 							hispanic="B01001I_001", asian="B01001D_001", total="B01001_001",
-								 							other="B01001F_001"),
+								 variables = c(med_income = "B19013_001", male = "B01001_002", female = "B01001_026",
+								 							 med_age = "B01002_001", white = "B01001A_001", black = "B01001B_001",
+								 							 hispanic = "B01001I_001", asian = "B01001D_001", total = "B01001_001",
+								 							 other = "B01001F_001"),
 								 year = 2019,
-								 moe_level=95)
+								 moe_level = 95)
 acs19_subset <- acs19[, c("GEOID","NAME", "variable","estimate")]
 acs19_spread <- spread(acs19_subset, key = variable, value = estimate)
 
