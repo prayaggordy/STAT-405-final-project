@@ -22,4 +22,4 @@ county_data <- mutate(acs19_spread, percent_asian=asian/total, percent_white=whi
 											percent_male=male/total, percent_female=female/total,
 											percent_other=other/total)
 
-
+county_data <- county_data[,c(1,2,12,4,3,6,10,7,5,11,14,15,13,16,19,17,18,8,9)]
