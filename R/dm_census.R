@@ -1,9 +1,6 @@
 library(tidycensus)
 library(tidyverse)
-library(dplyr)
 library(magrittr)
-
-#census_api_key("9f4ab0bf5eb0ba86e6bcf3d14e14683c45956f5b", install=TRUE)
 
 var <- load_variables(2019, "acs5", cache = TRUE)
 
