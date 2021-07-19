@@ -2,8 +2,6 @@ library(tidycensus)
 library(tidyverse)
 library(magrittr)
 
-var <- load_variables(2019, "acs5", cache = TRUE)
-
 acs19 <- get_acs(geography = "county",
 								 variables = c(medincome = "B19013_001", male="B01001_002", female="B01001_026",
 								 							medage="B01002_001", white="B01001A_001", black="B01001B_001",
