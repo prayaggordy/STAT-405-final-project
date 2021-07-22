@@ -12,6 +12,7 @@ data:
   pres: "countypres_2000-2020.csv"
   cdc_vacc: "COVID-19_Vaccinations_in_the_United_States_County.csv"
   tex_vacc: "People Vaccinated Map_crosstab_tx.csv"
+  small_ca_vacc: "manual_CA_smallcounty_vacc.csv"
 
   global_doses: "time_series_covid19_vaccine_doses_admin_global.csv"
   global_vax: "time_series_covid19_vaccine_global.csv"

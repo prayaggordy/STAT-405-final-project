@@ -1,7 +1,9 @@
-#https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh
+
 #https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh/data
 
-#Covid vaccine by zip in Texas - https://dshs.texas.gov/coronavirus/AdditionalData.aspx
+# California by county - https://data.democratandchronicle.com/covid-19-vaccine-tracker/california/06/
+
+# Texas by county - https://tabexternal.dshs.texas.gov/t/THD/views/COVID-19VaccineinTexasDashboard/Summary?:origin=card_share_link&:embed=y&:isGuestRedirectFromVizportal=y
 
 
 library(magrittr)
