@@ -1,17 +1,23 @@
 library(RSQLite); library(yaml); library(readr); library(dplyr);
 config <- read_yaml("config.yaml")
 
+
+
 get_trump_percents <- function(dcon, year){
+
+
 	query <- paste("
-	SELECT county_name as County, county_fips as FIPS, year, candidatevotes/totalvotes as trump_pct
-	FROM countypres_2016_2020
-	WHERE party = 'REPUBLICAN' AND year =", year,"
-	ORDER BY county_name;")
+	SELECT county_name as County, county_fips as FIPS, SUM(candidatevotes)/totalvotes as trump_pct
+	FROM (select *
+				FROM countypres_2016_2020
+				WHERE candidate LIKE 'DONALD%'AND year =", year,")
+	GROUP BY county_fips;")
 	res <- dbSendQuery(conn = dcon, query)
-	pres_results <- dbFetch(res, -1)
+	tot <- dbFetch(res, -1)
 	dbClearResult(res)
-	pres_results
+	tot
 }
+
 
 
 get_vacc_pres_df <- function(year){

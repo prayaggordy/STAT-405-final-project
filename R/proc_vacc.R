@@ -10,13 +10,13 @@ get_main_vacc_df <- function(dcon){
 	res <- dbSendQuery(conn = dcon, "
 	SELECT Recip_County as County, FIPS, MAX(Series_Complete_Pop_Pct) as pct_vacc
 	FROM vaccination
+	WHERE Recip_State != 'HI' and Recip_State != 'AK' and Recip_State != 'TX'
 	GROUP BY FIPS;
 	")
 	vacc <- dbFetch(res, -1)
 	dbClearResult(res)
 	print(head(vacc))
-	vacc <- mutate(vacc, County = str_replace_all(County, " County", ""), FIPS = as.numeric(FIPS), pct_vacc = pct_vacc/100)
-	print(vacc)
+	vacc %>% filter(pct_vacc > 0) %>% mutate(County = str_replace_all(County, " County", ""), FIPS = as.numeric(FIPS), pct_vacc = pct_vacc/100)
 }
 
 get_fips_lookup <- function(dcon){
@@ -65,10 +65,12 @@ get_vaccine_df <- function(){
 	vacc <- get_main_vacc_df(dcon)
 	tx_vacc <- get_tx_vacc_df(dcon)
 	ca_vacc <- get_ca_vacc_df(dcon)
+	print(head(ca_vacc))
 	dbDisconnect(dcon)
 
-	all_vacc <- full_join(vacc, tx_vacc)
-	all_vacc <- full_join(all_vacc, ca_vacc)
+	all_vacc <- full_join(tx_vacc, vacc)
+	all_vacc <- full_join(ca_vacc, all_vacc)
+	print(filter(all_vacc, pct_vacc < 0.02))
 	all_vacc
 }
 
