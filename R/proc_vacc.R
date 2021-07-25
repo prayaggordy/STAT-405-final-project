@@ -15,7 +15,6 @@ get_main_vacc_df <- function(dcon){
 	")
 	vacc <- dbFetch(res, -1)
 	dbClearResult(res)
-	print(head(vacc))
 	vacc %>% filter(pct_vacc > 0) %>% mutate(County = str_replace_all(County, " County", ""), FIPS = as.numeric(FIPS), pct_vacc = pct_vacc/100)
 }
 
