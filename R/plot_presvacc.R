@@ -83,4 +83,3 @@ top_and_blue <- filter(top, trump_pct < 0.4)
 
 plot_trump_vacc()
 make_race_hist_plots()
-
