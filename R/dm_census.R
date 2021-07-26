@@ -13,7 +13,12 @@ xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/censu
 
 	df <- df %>%
 		janitor::clean_names() %>%
-		mutate(region = paste(region, "Region"))
+		mutate(region = paste(region, "Region")) %>%
+		inner_join(tigris::fips_codes %>%
+							 	select(state_code = state, state_fips = state_code) %>%
+							 	distinct(),
+							 by = "state_code") %>%
+		select(state_fips, region)
 
 	write_csv(df, paste0(path_proc, fn))
 
