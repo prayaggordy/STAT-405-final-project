@@ -5,6 +5,7 @@ paths:
   us_hr: "data/raw/us_data/hourly/"
   us_ts: "data/raw/us_data/time_series/"
   global_data: "data/raw/global_data/"
+  rmd: "Rmd/"
 
 data:
   nyt_covid: "nyt_covid.csv"
@@ -24,3 +25,5 @@ data:
   census: "{geography}_census.csv"
   region_xwalk: "region_xwalk.csv"
 
+paper:
+  sections: ["introduction", "data", "methods", "results", "discussion", "appendix"]
