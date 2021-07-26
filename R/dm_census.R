@@ -5,7 +5,6 @@ download_census <- function(fn = config$data$census,
 														path_raw = config$paths$raw,
 														path_proc = config$paths$proc,
 														update = F) {
-	census_api_key("01c1efe968fe5871d110a36bd55da5aef76a7bb8")
 
 	fn_raw <- paste0(path_raw, fn)
 	fn_proc <- paste0(path_proc, fn)
