@@ -16,11 +16,26 @@ download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv
 												 path_proc = config$paths$proc,
 												 update = F) {
 
+	fn_proc <- paste0(path_proc, fn)
+	if (file.exists(fn_proc) & !update) {
+		return(read_csv(fn_proc))
+	}
+
 	df <- download_data(u = u,
 											fn_full = paste0(path_raw, fn),
 											update = update)
 
-	# this is where we do any data processing
+	df <- df %>%
+		janitor::clean_names() %>%
+		select(date,
+					 fips,
+					 first_dose = administered_dose1_pop_pct,
+					 fully_vax = series_complete_pop_pct) %>%
+		filter(fips != "UNK") %>%
+		mutate(date = as.Date(date, "%m/%d/%Y"),
+					 across(c(first_dose, fully_vax), as.numeric))
+
+	write_csv(df, fn_proc)
 
 	df
 }

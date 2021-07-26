@@ -1,6 +1,11 @@
-library(tidyr)
-library(dplyr)
-library(tidycensus)
+library(tidyr); library(dplyr); library(tidycensus)
+
+plot_vax_by_region <- function(df,
+															 xwalk_region) {
+	df <- df %>%
+		filter()
+}
+
 vax <- vaccination %>%
 	filter(Date=="07/24/2021") %>%
 	arrange(FIPS)
