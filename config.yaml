@@ -22,4 +22,5 @@ data:
   doses: "time_series_covid19_vaccine_doses_admin_US.csv"
   vax_data_ts: "vaccine_data_us_timeline.csv"
   census: "{geography}_census.csv"
+  region_xwalk: "region_xwalk.csv"
 
