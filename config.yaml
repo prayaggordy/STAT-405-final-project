@@ -5,6 +5,7 @@ paths:
   us_hr: "data/raw/us_data/hourly/"
   us_ts: "data/raw/us_data/time_series/"
   global_data: "data/raw/global_data/"
+  rmd: "Rmd/"
 
 data:
   nyt_covid: "nyt_covid.csv"
@@ -14,7 +15,6 @@ data:
   vacc_hes: "Vaccine_Hesitancy_for_COVID-19__County_and_local_estimates.csv"
   tex_vacc: "people_vaccinated_tx.csv"
   small_ca_vacc: "manual_CA_smallcounty_vacc.csv"
-
   global_doses: "time_series_covid19_vaccine_doses_admin_global.csv"
   global_vax: "time_series_covid19_vaccine_global.csv"
   global_vax_data: "vaccine_data_global.csv"
@@ -23,5 +23,8 @@ data:
   ppl_vax_ts: "people_vaccinated_us_timeline.csv"
   doses: "time_series_covid19_vaccine_doses_admin_US.csv"
   vax_data_ts: "vaccine_data_us_timeline.csv"
-  census: "census.csv"
+  census: "{geography}_census.csv"
+  region_xwalk: "region_xwalk.csv"
 
+paper:
+  sections: ["introduction", "data", "methods", "results", "discussion", "appendix"]
