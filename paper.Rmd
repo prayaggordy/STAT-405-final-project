@@ -1,0 +1,28 @@
+---
+title: "Paper"
+author: "Ankit Patel, Hallie Trial, and Prayag Gordy"
+date: "7/26/2021"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+											warning = FALSE,
+											message = FALSE,
+											comment = NA)
+```
+
+```{r}
+library(magrittr)
+
+source("main.R")
+```
+
+
+```{r child=paste0(config$paths$rmd, config$paper$sections, ".Rmd")}
+```
+
+
