@@ -29,11 +29,11 @@ download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv
 		janitor::clean_names() %>%
 		select(date,
 					 fips,
-					 first_dose = administered_dose1_pop_pct,
-					 fully_vax = series_complete_pop_pct) %>%
+					 first_dose = administered_dose1_recip_18plus_pop_pct,
+					 fully_vax = series_complete_18plus_pop_pct) %>%
 		filter(fips != "UNK") %>%
 		mutate(date = as.Date(date, "%m/%d/%Y"),
-					 across(c(first_dose, fully_vax), as.numeric))
+					 across(c(first_dose, fully_vax), ~as.numeric(.)/100))
 
 	write_csv(df, fn_proc)
 
