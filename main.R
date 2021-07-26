@@ -9,6 +9,7 @@ pres <- read_csv(paste0(config$paths$raw, config$data$pres))
 tx_vaccination <- read_csv(paste0(config$paths$raw, config$data$tex_vacc))
 small_ca_vacc <- read_csv(paste0(config$paths$raw, config$data$small_ca_vacc))
 vaccination <- download_vacc()
+xwalk_region <- xwalk_regions()
 
 create_sql(update = T)
 

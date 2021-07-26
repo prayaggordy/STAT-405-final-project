@@ -1,5 +1,24 @@
 library(tidycensus); library(tidyverse); library(magrittr); library(dplyr)
-library(tidyr); library(readr)
+library(tidyr); library(readr); library(tibble)
+
+xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv",
+													fn = config$data$region_xwalk,
+													path_raw = config$paths$raw,
+													path_proc = config$paths$proc,
+													update = F) {
+
+	df <- download_data(u = u,
+											fn_full = paste0(path_raw, fn),
+											update = update)
+
+	df <- df %>%
+		janitor::clean_names() %>%
+		mutate(region = paste(region, "Region"))
+
+	write_csv(df, paste0(path_proc, fn))
+
+	df
+}
 
 download_census <- function(geography,
 														fn = config$data$census,
