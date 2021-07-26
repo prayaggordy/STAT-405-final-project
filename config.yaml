@@ -12,6 +12,7 @@ data:
   db: "finalproject.db"
   pres: "countypres_2000-2020.csv"
   cdc_vacc: "COVID-19_Vaccinations_in_the_United_States_County.csv"
+  vacc_hes: "Vaccine_Hesitancy_for_COVID-19__County_and_local_estimates.csv"
   tex_vacc: "people_vaccinated_tx.csv"
   small_ca_vacc: "manual_CA_smallcounty_vacc.csv"
   global_doses: "time_series_covid19_vaccine_doses_admin_global.csv"
