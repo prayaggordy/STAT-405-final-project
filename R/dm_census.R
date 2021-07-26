@@ -1,19 +1,20 @@
 library(tidycensus); library(tidyverse); library(magrittr); library(dplyr)
 library(tidyr); library(readr)
 
-download_census <- function(fn = config$data$census,
+download_census <- function(geography,
+														fn = config$data$census,
 														path_raw = config$paths$raw,
 														path_proc = config$paths$proc,
 														update = F) {
 
-	fn_raw <- paste0(path_raw, fn)
-	fn_proc <- paste0(path_proc, fn)
+	fn_raw <- paste0(path_raw, glue::glue(fn))
+	fn_proc <- paste0(path_proc, glue::glue(fn))
 
 	if (file.exists(fn_proc) & !update)
 		return(read_csv(fn_proc))
 
 	if (!file.exists(fn_raw) | update) {
-		df <- get_acs(geography = c("region"),
+		df <- get_acs(geography = geography,
 									variables = c(med_income = "B19013_001", male = "B01001_002",
 																female = "B01001_026", med_age = "B01002_001",
 																white = "B01001A_001", black = "B01001B_001",
