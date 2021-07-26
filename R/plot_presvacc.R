@@ -1,10 +1,6 @@
 library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra)
 config <- read_yaml("config.yaml")
 
-
-
-
-
 #blue_demo <- inner_join(filter(presvacc, trump_pct < 0.4), demos)
 #lowvacc_demo <- inner_join(filter(presvacc, pct_vacc < 0.4), demos)
 #lowvacc_blue <- filter(lowvacc_demo, trump_pct < 0.4)
@@ -27,6 +23,7 @@ get_census_data<- function(){
 
 make_race_histogram <- function(df, col_dark, col_light, title, ylim){
 	ggplot(df, aes(x=percent_black))+
+		theme_minimal()+
 		ggtitle(title)+
 		xlab("Proportion Black")+
 		geom_histogram(color = col_dark, fill = col_light)+
@@ -51,7 +48,7 @@ plot_trump_vacc <- function(){
 		ggtitle("Proportion Vaccinated Versus Proportion Voting for Trump by County")+
 		ylab("Proportion of Population Vaccinated") +
 		xlab("Proportion of Votes Cast for Trump")+
-		scale_color_manual(values = c("blue","red"))+
+		theme_minimal()+
 		geom_rect(mapping=aes(xmin=0, xmax=0.5, ymin=-0.01, ymax=1.01, fill=I('lightskyblue2')), color = 'lightskyblue2')+
 		geom_rect(mapping=aes(xmin=0.5, xmax=1.0, ymin=-0.01, ymax=1.01, fill=I('lightsalmon2')), color = 'lightsalmon2')+
 		theme(axis.text = element_text(size = 8), axis.title = element_text(size = 10), title = element_text(size = 12))+
