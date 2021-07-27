@@ -4,6 +4,15 @@
 
 We collected `r length(unique(covid$date))` days' worth of COVID-19 data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
 
+Variables:
+
+1. `date` - the date of the reporting
+2. `county` - the county name
+3. `state` - the state name
+4. `fips` - the FIPS code for that county
+5. `cases` - the number of cumulative cases in that county as of that date
+6. `deaths` - the number of cumulative deaths in that county as of that date
+
 ### Presidential Election Results by County
 This dataset gives the number of votes cast for the major Democratic and Republican candidates for 2016 in 2020, along with the total number of votes cast, for each U.S. county. It was taken from the MIT Election Data and Science Lab's County Presidential Election Returns 2000-2020 dataset by filtering the year. 
 
