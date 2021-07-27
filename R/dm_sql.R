@@ -44,22 +44,23 @@ create_sql <- function(path_proc = config$paths$proc,
 		file.remove(paste0(path_proc, fn))
 
 		dcon <- dbConnect(SQLite(), dbname = paste0(config$paths$proc, config$data$db))
-		add_pres_results(dcon = dcon,
-										 df = pres)
-		add_simple(dcon = dcon,
-							 df = vaccination,
-							 name = "vaccination")
+		add_cases(dcon = dcon,
+							df = covid)
 		add_simple(dcon = dcon,
 							 df = vaccine_hesitancy,
 							 name = "vaccine_hesitancy")
-		add_cases(dcon = dcon,
-							df = covid)
+		add_simple(dcon = dcon,
+							 df = census_county,
+							 name = "census_county")
 		add_simple(dcon = dcon,
 							 df = census_region,
 							 name = "census_region")
 		add_simple(dcon = dcon,
-							 df = census_county,
-							 name = "census_county")
+							 df = pres,
+							 name = "pres")
+		add_simple(dcon = dcon,
+							 df = vaccination,
+							 name = "vaccination")
 
 		dbDisconnect(conn = dcon)
 	}
