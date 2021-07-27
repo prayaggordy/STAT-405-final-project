@@ -17,5 +17,5 @@ plot_vax_by_region <- function(df = vaccination,
 				 y = "Number of counties",
 				 title = "Percent vaccinated by county") +
 		scale_x_continuous(labels = scales::percent) +
-		theme(legend.position = "none", plot.title=element_text(hjust = 0.5))
+		theme(legend.position = "none")
 }
