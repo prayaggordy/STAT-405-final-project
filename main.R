@@ -13,3 +13,5 @@ vaccination <- download_vacc()
 xwalk_region <- xwalk_regions()
 
 create_sql()
+
+plot_svi()
