@@ -16,3 +16,4 @@ us_vaccination <- download_vacc()
 vaccination <- dm_combine_vacc()
 
 create_sql()
+
