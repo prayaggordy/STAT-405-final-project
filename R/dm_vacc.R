@@ -27,10 +27,10 @@ download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv
 
 	df <- df %>%
 		janitor::clean_names() %>%
-		select(date,
-					 fips,
-					 first_dose = administered_dose1_recip_18plus_pop_pct,
-					 fully_vax = series_complete_18plus_pop_pct) %>%
+		dplyr::select(date,
+									fips,
+									first_dose = administered_dose1_pop_pct,
+									fully_vax = series_complete_pop_pct) %>%
 		filter(fips != "UNK") %>%
 		mutate(date = as.Date(date, "%m/%d/%Y"),
 					 across(c(first_dose, fully_vax), ~as.numeric(.)/100))
@@ -88,6 +88,40 @@ dm_texas_vacc <- function(u = "https://www.dshs.texas.gov/immunize/covid19/COVID
 		dplyr::mutate(dplyr::across(c(first_dose, fully_vax), ~ as.numeric(.) / total)) %>%
 		dplyr::select(fips, first_dose, fully_vax)
 
+	readr::write_csv(df, paste0(path_proc, fn))
+
 	df
 }
 
+dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
+											 path_raw = config$paths$raw,
+											 path_proc = config$paths$proc,
+											 census = census_county) {
+
+	df <- readr::read_csv(paste0(path_raw, fn)) %>%
+		janitor::clean_names() %>%
+		dplyr::mutate(fips = stringr::str_pad(fips, width = 5, side = "left", pad = "0")) %>%
+		dplyr::inner_join(census, by = "fips") %>%
+		dplyr::mutate(dplyr::across(c(one_dose, two_doses), ~ . / total)) %>%
+		dplyr::select(fips, first_dose = one_dose, fully_vax = two_doses)
+
+	readr::write_csv(df, paste0(path_proc, fn))
+
+	df
+}
+
+dm_combine_vacc <- function(us = us_vaccination,
+														tx = tx_vaccination,
+														ca = small_ca_vacc,
+														fn = config$data$vax_data_all,
+														path_proc = config$paths$proc) {
+	df <- us %>%
+		dplyr::bind_rows(tx %>%
+										 	dplyr::mutate(date = max(us$date))) %>%
+		dplyr::bind_rows(ca %>%
+										 	dplyr::mutate(date = max(us$date)))
+
+	readr::write_csv(df, paste0(path_proc, fn))
+
+	df
+}
