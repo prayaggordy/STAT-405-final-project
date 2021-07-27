@@ -1,0 +1,5 @@
+## Data
+
+### Daily Covid counts
+
+We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
