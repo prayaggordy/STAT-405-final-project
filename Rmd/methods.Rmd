@@ -1,1 +1,9 @@
 ## Methods
+Note: This is an outline of our methods section.
+
+* Linear regression to find predictors of vaccine hesitancy, specifically race and partisanship
+* Linear regression to find predictors of vaccination rate, specifically race, partisanship, vaccine hesitancy, and other demographics (e.g. income)
+	* Together, this can suggest whether vaccine hesitancy is a mediator, moderator, or neither
+* Linear regression to examine relationship between vaccination rate and cumulative deaths, controlling for race and partisanship
+	* This can shed light on whether the severity of the pandemic in a county influences residents' desire to get vaccinated
+

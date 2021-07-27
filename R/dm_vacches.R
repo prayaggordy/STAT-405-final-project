@@ -28,6 +28,9 @@ download_vacches <- function(u = "https://data.cdc.gov/api/views/q9mh-h2tw/rows.
 	df <- df %>%
 		janitor::clean_names() %>%
 		dplyr::select(fips = fips_code,
+									hesitant = estimated_hesitant,
+									hesitant_unsure = estimated_hesitant_or_unsure,
+									hesitant_strongly = estimated_strongly_hesitant,
 									svi = social_vulnerability_index_svi,
 									svi_category) %>%
 		dplyr::mutate(fips = stringr::str_pad(fips, width = 5, side = "left", pad = "0"))
