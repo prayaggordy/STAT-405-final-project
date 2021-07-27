@@ -60,8 +60,11 @@ create_sql <- function(path_proc = config$paths$proc,
 		add_cases(dcon = dcon,
 							df = covid)
 		add_simple(dcon = dcon,
-							 df = census,
-							 name = "census")
+							 df = census_region,
+							 name = "census_region")
+		add_simple(dcon = dcon,
+							 df = census_county,
+							 name = "census_county")
 
 		dbDisconnect(conn = dcon)
 	}
