@@ -1,8 +1,34 @@
 ## Data
 
+### `census_county` and `census_region`
+
+We used the `tidycensus` package in R to obtain American Community Survey 5-year data for the 2014-2019 span. The ACS is an annual survey that still collect large amounts of data from every single county in the US, so the data is more recent than the 2010 census and is still very comprehensive (2020 census data is not publicly avaiilable yet). We called two different data sets with different geographies: For one set, we got all the desired variables by county, while for the other set, we called the variables by region. The variables we called are as follows:
+
+1. `med_income` (B19013_001 in `tidycensus`): the median income of the chosen geography's population (each county in census_county, each region in census_region).
+2. `male` (B01001_002): the total number of males in the selected geography's population.
+3. `female` (B01001_026): the total number of females in the selected geography's population.
+4. `med_age` (B01002_001): the median age of the chosen geography's population.
+5. `white` (B01001A_001): the total number of white residents in the selected geography's population.
+6. `black` (B01001B_001): the total number of black residents in the selected geography's population.
+7. `asian` (B01001D_001): the total number of asian residents in the selected geography's population.
+8. `hispanic` (B01001I_001): the total number of hispanic residents in the selected geography's population.
+9. `total` (B01001_001): the total population of the selected geography.
+10. `other` (B01001F_001): the total number of residents of "other" races in the selected geography.
+
+We then created several columns of our own data:
+
+1. `percent_male`: the percentage of the population of the selected geography that is male.
+2. `percent_female`: the percentage of the population of the selected geography that is female.
+3. `percent_white`: the percentage of the population of the selected geography that is white.
+4. `percent_black`: the percentage of the population of the selected geography that is black.
+5. `percent_hispanic`: the percentage of the population of the selected geography that is hispanic.
+6. `percent_asian`: the percentage of the population of the selected geography that is asian.
+7. `percent_other`: the percentage of the population of the selected geography that is of "other" race.
+
+
 ### Daily Covid counts
 
-We collected `r length(unique(covid$date))` days' worth of COVID-19 data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
+We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
 
 Variables:
 
@@ -14,7 +40,7 @@ Variables:
 6. `deaths` - the number of cumulative deaths in that county as of that date
 
 ### Presidential Election Results by County
-This dataset gives the number of votes cast for the major Democratic and Republican candidates for 2016 in 2020, along with the total number of votes cast, for each U.S. county. It was taken from the MIT Election Data and Science Lab's County Presidential Election Returns 2000-2020 dataset by filtering the year. 
+This dataset gives the number of votes cast for the major Democratic and Republican candidates for 2016 in 2020, along with the total number of votes cast, for each U.S. county. It was taken from the MIT Election Data and Science Lab's County Presidential Election Returns 2000-2020 dataset by filtering the year.
 
 Variables:
 
@@ -30,7 +56,7 @@ Variables:
 10. `totalvotes` - the total number of votes cast in the county for the election, numerical
 
 ### Main Vaccination Dataset
-We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing. 
+We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing.
 
 Variables:
 
@@ -65,9 +91,9 @@ Variables:
 
 
 ### Texas Vaccination
-To complete our county-level vaccination data, we collected vaccination data from the Texas Department of Health and Human services COVID-19 Vaccination in Texas Summary. 
+To complete our county-level vaccination data, we collected vaccination data from the Texas Department of Health and Human services COVID-19 Vaccination in Texas Summary.
 
-Variables: 
+Variables:
 
 1. `County_Name` - character
 2. `PHR_critical_Pop` - Public Health Region in which the county is located, character
@@ -92,7 +118,7 @@ Variables:
 3. `One_Dose` - number of people who have received at least one vaccine dose, numerical
 4. `Two_Doses` - number of people who are fully vaccinated, numerical
 
-### Vaccine Hesitancy 
+### Vaccine Hesitancy
 We obtained county-level estimates of the percentage of the population who is hesitant to receive the COVID-19 vaccine from the CDC. The CDC calculates and compiles these estimates based on Household Pulse Survey data. The dataset also includes racial demographics and SVI (Social Vulnerability Index) information (see Main Vaccination Dataset for details on SVI), as well as geographical information because it was designed to produce a map.
 
 Variables:
@@ -116,4 +142,3 @@ Variables:
 17. `Percent non-Hispanic White` - numerical
 18. `Geographical Point` - ordered pair (longitude, latitude) marking the starting point for the county boundary - character
 19. `County Boundary` - a series of ordered pairs (longitude, latitude) marking the boundary of the county - character
-
