@@ -4,26 +4,26 @@
 
 We used the `tidycensus` package in R to obtain American Community Survey 5-year data for the 2014-2019 span. The ACS is an annual survey that still collect large amounts of data from every single county in the US, so the data is more recent than the 2010 census and is still very comprehensive (2020 census data is not publicly avaiilable yet). We called two different data sets with different geographies: For one set, we got all the desired variables by county, while for the other set, we called the variables by region. The variables we called are as follows:
 
-		1. `med_income` (B19013_001 in `tidycensus`): the median income of the chosen geography's population (each county in census_county, each region in census_region).
-		2. `male` (B01001_002): the total number of males in the selected geography's population.
-		3. `female` (B01001_026): the total number of females in the selected geography's population.
-		4. `med_age` (B01002_001): the median age of the chosen geography's population.
-		5. `white` (B01001A_001): the total number of white residents in the selected geography's population.
-		6. `black` (B01001B_001): the total number of black residents in the selected geography's population.
-		7. `asian` (B01001D_001): the total number of asian residents in the selected geography's population.
-		8. `hispanic` (B01001I_001): the total number of hispanic residents in the selected geography's population.
-		9. `total` (B01001_001): the total population of the selected geography.
-		10. `other` (B01001F_001): the total number of residents of "other" races in the selected geography.
+1. `med_income` (B19013_001 in `tidycensus`): the median income of the chosen geography's population (each county in census_county, each region in census_region).
+2. `male` (B01001_002): the total number of males in the selected geography's population.
+3. `female` (B01001_026): the total number of females in the selected geography's population.
+4. `med_age` (B01002_001): the median age of the chosen geography's population.
+5. `white` (B01001A_001): the total number of white residents in the selected geography's population.
+6. `black` (B01001B_001): the total number of black residents in the selected geography's population.
+7. `asian` (B01001D_001): the total number of asian residents in the selected geography's population.
+8. `hispanic` (B01001I_001): the total number of hispanic residents in the selected geography's population.
+9. `total` (B01001_001): the total population of the selected geography.
+10. `other` (B01001F_001): the total number of residents of "other" races in the selected geography.
 
 We then created several columns of our own data:
 
-		1. `percent_male`: the percentage of the population of the selected geography that is male.
-		2. `percent_female`: the percentage of the population of the selected geography that is female.
-		3. `percent_white`: the percentage of the population of the selected geography that is white.
-		4. `percent_black`: the percentage of the population of the selected geography that is black.
-		5. `percent_hispanic`: the percentage of the population of the selected geography that is hispanic.
-		6. `percent_asian`: the percentage of the population of the selected geography that is asian.
-		7. `percent_other`: the percentage of the population of the selected geography that is of "other" race.
+1. `percent_male`: the percentage of the population of the selected geography that is male.
+2. `percent_female`: the percentage of the population of the selected geography that is female.
+3. `percent_white`: the percentage of the population of the selected geography that is white.
+4. `percent_black`: the percentage of the population of the selected geography that is black.
+5. `percent_hispanic`: the percentage of the population of the selected geography that is hispanic.
+6. `percent_asian`: the percentage of the population of the selected geography that is asian.
+7. `percent_other`: the percentage of the population of the selected geography that is of "other" race.
 
 
 ### Daily Covid counts
