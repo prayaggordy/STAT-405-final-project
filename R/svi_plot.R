@@ -14,8 +14,8 @@ plot_svi <- function(df_hes = vaccine_hesitancy,
 					 											 "Low Vulnerability",
 					 											 "Very Low Vulnerability")) %>%
 		ggplot(aes(x = fully_vax, fill = svi_category)) +
-		geom_histogram(scales = "free_y") +
-		facet_wrap(~svi_category) +
+		geom_histogram() +
+		facet_wrap(~svi_category, scales = "free_y") +
 		theme_minimal() +
 		scale_x_continuous(labels = scales::percent) +
 		labs(x = "Percent of population fully vaccinated",
