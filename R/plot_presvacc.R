@@ -65,29 +65,32 @@ make_race_hist_plots <- function(){
 	grid.arrange(p1, p2, p3, p4, nrow=2)
 }
 
-rr.huber <- rlm(presvacc$pct_vacc ~ presvacc$trump_pct)
+race_hist_plot <- function() {
+	rr.huber <- rlm(presvacc$pct_vacc ~ presvacc$trump_pct)
 
-#
-# presvacc <- filter(get_vacc_pres_df(2020.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
-# demos <- get_census_data()
-# presvacc_2016 <- filter(get_vacc_pres_df(2016.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
-#
-# resid_by_county <- data.frame(County = presvacc$County.y, FIPS = presvacc$FIPS, trump_pct = presvacc$trump_pct, resid = rr.huber$resid)
-# resid_sorted <- resid_by_county[order(resid_by_county$resid),]
-# rows <- nrow(resid_sorted)
-# ten_percent <- round(rows*0.1)
-# bottom_resid <- resid_sorted[1:ten_percent,]
-# top_resid <- resid_sorted[(rows-ten_percent):rows,]
-#
-# bottom <- inner_join(bottom_resid, demos, by='FIPS')
-# top <- inner_join(top_resid, demos, by = 'FIPS')
-#
-#
-# bottom_and_blue <- filter(bottom, trump_pct < 0.4)
-# bottom_and_red <- filter(bottom, trump_pct >0.6)
-#
-# top_and_red <- filter(top, trump_pct > 0.6)
-# top_and_blue <- filter(top, trump_pct < 0.4)
-#
-# plot_trump_vacc()
-# make_race_hist_plots()
+	presvacc <- filter(get_vacc_pres_df(2020.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
+	demos <- get_census_data()
+	presvacc_2016 <- filter(get_vacc_pres_df(2016.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
+
+	resid_by_county <- data.frame(County = presvacc$County.y, FIPS = presvacc$FIPS, trump_pct = presvacc$trump_pct, resid = rr.huber$resid)
+	resid_sorted <- resid_by_county[order(resid_by_county$resid),]
+	rows <- nrow(resid_sorted)
+	ten_percent <- round(rows*0.1)
+	bottom_resid <- resid_sorted[1:ten_percent,]
+	top_resid <- resid_sorted[(rows-ten_percent):rows,]
+
+	bottom <- inner_join(bottom_resid, demos, by='FIPS')
+	top <- inner_join(top_resid, demos, by = 'FIPS')
+
+
+	bottom_and_blue <- filter(bottom, trump_pct < 0.4)
+	bottom_and_red <- filter(bottom, trump_pct >0.6)
+
+	top_and_red <- filter(top, trump_pct > 0.6)
+	top_and_blue <- filter(top, trump_pct < 0.4)
+
+	plot_trump_vacc()
+	make_race_hist_plots()
+}
+
+
