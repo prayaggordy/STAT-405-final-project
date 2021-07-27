@@ -1,4 +1,18 @@
 ## Results
+
+### County Vaccination Histogram by Region
+The faceted histogram above demonstrates several important ideas. First, the Northeast region of the country displays a clear lead in the percentage of counties that have higher levels of full vaccination among residents. A large majority of counties in the Northeast are at least 65% fully vaccinated, and many are reaching the 70-75% full vaccination levels that can signal the beginnings of herd immunity. Furthermore, the data is more centralized in the Northeast compared to the other regions, suggesting that there is not a large level of hesitancy or belief in misinformation about the vaccine.
+
+Meanwhile, the South is lagging behind the other three regions as a large portion of its counties are still in the 35-45% fully vaccinated range. Additionally, there is wider range in the data, and there are many counties that are still below a 25% full vaccination threshold. This could be a result of or correlated to several influencing factors which will be discussed in other results, including demographics, hesitancy, and politics.
+
+The Midwest and West are very similar in that they both have a peak around the 45-55% range. Both regions display a wide range of vaccination levels in both directions, suggesting that there is a wide array of willingness to get vaccinated within those regions.
+
+```{r}
+plot_vax_by_region()
+```
+
+
+
 ### How are the prevailing political views of a county related to its rate of vaccination?
 As anticipated, there appears to be a definite negative correlation between the percent of the county that voted for Donald Trump in 2020 and the percent of the population that is vaccinated. Donald Trump and other Republicans have consistently shown themselves to be less in favor of lockdown orders, mask mandates, and COVID-19 vaccinations than Democrats, so the counties in which a larger percentage of the votes were cast for Donald Trump in the 2020 presidential election are likely to be those for whom these anti-COVID precautions seemed reasonable. However, there are  outlier counties in the lower left quadrant of the plot with far more or fewer people vaccinated than would have been predicted based solely on their political views. The next section explores race as a potential contributing factor predicting COVID-vaccination rates in these outlier counties.
 
@@ -8,9 +22,8 @@ plot_trump_vacc()
 
 
 ### What are the racial demographics of counties that do not conform to the expected relationship between politics and vaccination?
-There appeared to be a distinct cluster of democratic counties with unexpectedly low vaccination rates in the lower left corner of the plot on the previous page. We hypothesized that these may be counties with high percentages of non-white residents. To investigate these and other outlier counties, we performed a linear regression on the relationship between proportion of votes cast for Trump and proportion of population vaccinated. We then examined both Democratic (<40% of all votes in the 2020 presidential race cast for Trump) and Republican (more than 60% of all votes cast for Trump) in the top 10% (unexpectedly high vaccination rates) and bottom 10% of residuals (unexpectedly low vaccination rates) from this linear regression. We then produced histograms of the proportion of Black residents in each of these four categories of counties. For the counties with unexpectedly high vaccination rates (both Democratic and Republican), the distribution of proportion Black residents peaked near 0. For the low-vaccination Republican counties, many counties also had a proportion of Black residents near 0, but there was another peak around 0.25. For the Democratic low-vaccination rate counties, the results were even more striking: a majority of counties had more than 35% Black residents. Clearly, counties with lower vaccination rates than predicted by their political leanings are much more likely to have more Black residents than counties with higher vaccination rates than predicted by their political leanings. 
+There appeared to be a distinct cluster of democratic counties with unexpectedly low vaccination rates in the lower left corner of the plot on the previous page. We hypothesized that these may be counties with high percentages of non-white residents. To investigate these and other outlier counties, we performed a linear regression on the relationship between proportion of votes cast for Trump and proportion of population vaccinated. We then examined both Democratic (<40% of all votes in the 2020 presidential race cast for Trump) and Republican (more than 60% of all votes cast for Trump) in the top 10% (unexpectedly high vaccination rates) and bottom 10% of residuals (unexpectedly low vaccination rates) from this linear regression. We then produced histograms of the proportion of Black residents in each of these four categories of counties. For the counties with unexpectedly high vaccination rates (both Democratic and Republican), the distribution of proportion Black residents peaked near 0. For the low-vaccination Republican counties, many counties also had a proportion of Black residents near 0, but there was another peak around 0.25. For the Democratic low-vaccination rate counties, the results were even more striking: a majority of counties had more than 35% Black residents. Clearly, counties with lower vaccination rates than predicted by their political leanings are much more likely to have more Black residents than counties with higher vaccination rates than predicted by their political leanings.
 
 ```{r}
 race_hist_plot()
 ```
-
