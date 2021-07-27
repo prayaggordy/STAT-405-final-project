@@ -19,6 +19,7 @@ data:
   global_vax: "time_series_covid19_vaccine_global.csv"
   global_vax_data: "vaccine_data_global.csv"
   vax_data: "vaccine_data_us.csv"
+  vax_data_all: "vaccine_data_us_full.csv"
   ppl_vax: "vaccine_people_vaccinated_US.csv"
   ppl_vax_ts: "people_vaccinated_us_timeline.csv"
   doses: "time_series_covid19_vaccine_doses_admin_US.csv"
