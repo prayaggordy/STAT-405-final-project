@@ -11,6 +11,10 @@ small_ca_vacc <- read_csv(paste0(config$paths$raw, config$data$small_ca_vacc))
 vaccination <- download_vacc()
 xwalk_region <- xwalk_regions()
 
+<<<<<<< HEAD
 create_sql(update = T)
+=======
+# create_sql(update = T)
+>>>>>>> 610f9cc72fbebaaa908d076d10ca1dddd5a0d1d9
 
 

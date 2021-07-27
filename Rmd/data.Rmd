@@ -102,3 +102,5 @@ Variables:
 17. Percent non-Hispanic White - numerical
 18. Geographical Point - ordered pair (longitude, latitude) marking the starting point for the county boundary - character
 19. County Boundary - a series of ordered pairs (longitude, latitude) marking the boundary of the county - character
+
+We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
