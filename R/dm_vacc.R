@@ -112,6 +112,7 @@ dm_combine_vacc <- function(us = us_vaccination,
 														fn = config$data$vax_data_all,
 														path_proc = config$paths$proc) {
 	df <- us %>%
+		dplyr::filter(!(fips %in% c(tx$fips, ca$fips))) %>%
 		dplyr::bind_rows(tx %>%
 										 	dplyr::mutate(date = max(us$date))) %>%
 		dplyr::bind_rows(ca %>%
