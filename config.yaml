@@ -12,18 +12,21 @@ data:
   db: "finalproject.db"
   pres: "countypres_2000-2020.csv"
   cdc_vacc: "COVID-19_Vaccinations_in_the_United_States_County.csv"
+  vacc_hes: "Vaccine_Hesitancy_for_COVID-19__County_and_local_estimates.csv"
   tex_vacc: "people_vaccinated_tx.csv"
   small_ca_vacc: "manual_CA_smallcounty_vacc.csv"
   global_doses: "time_series_covid19_vaccine_doses_admin_global.csv"
   global_vax: "time_series_covid19_vaccine_global.csv"
   global_vax_data: "vaccine_data_global.csv"
   vax_data: "vaccine_data_us.csv"
+  vax_data_all: "vaccine_data_us_full.csv"
   ppl_vax: "vaccine_people_vaccinated_US.csv"
   ppl_vax_ts: "people_vaccinated_us_timeline.csv"
   doses: "time_series_covid19_vaccine_doses_admin_US.csv"
   vax_data_ts: "vaccine_data_us_timeline.csv"
   census: "{geography}_census.csv"
   region_xwalk: "region_xwalk.csv"
+  tx_fips: "txfips.csv"
 
 paper:
   sections: ["introduction", "data", "methods", "results", "discussion", "appendix"]
