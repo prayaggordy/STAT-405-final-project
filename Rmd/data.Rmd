@@ -1,10 +1,6 @@
 ## Data
 
-### Daily Covid counts
-
-We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
-
-## census_county and census_region
+### census_county and census_region
 
 We used the tidycensus package in R to obtain American Community Survey 5-year data for the 2014-2019 span. The ACS is an annual survey that still collect large amounts of data from every single county in the US, so the data is more recent than the 2010 census and is still very comprehensive (2020 census data is not publicly avaiilable yet). We called two different data sets with different geographies: for one set, we got all the desired variables by county, while for the other set, we called the variables by region. The variables we called are as follows:
 
@@ -18,7 +14,7 @@ We used the tidycensus package in R to obtain American Community Survey 5-year d
 		8. hispanic (B01001I_001): the total number of hispanic residents in the selected geography's population.
 		9. total (B01001_001): the total population of the selected geography.
 		10. other (B01001F_001): the total number of residents of "other" races in the selected geography.
-		
+
 We then created several columns of our own data:
 
 		1. percent_male: the percentage of the population of the selected geography that is male.
@@ -28,8 +24,113 @@ We then created several columns of our own data:
 		5. percent_hispanic: the percentage of the population of the selected geography that is hispanic.
 		6. percent_asian: the percentage of the population of the selected geography that is asian.
 		7. percent_other: the percentage of the population of the selected geography that is of "other" race.
-		
-		
-		
-		
-		
+
+
+
+### Daily Covid counts
+
+We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
+
+### Presidential Election Results by County
+This dataset gives the number of votes cast for the major Democratic and Republican candidates for 2016 in 2020, along with the total number of votes cast, for each U.S. county. It was taken from the MIT Election Data and Science Lab's County Presidential Election Returns 2000-2020 dataset by filtering the year.
+
+Variables:
+
+1. `year` - the year of the election results, numerical
+2. `state` - the state in which the county is located, character
+3. `state_po` - the two-letter abbreviation for the state in which the county is located, character
+4. `county_name` - the name of the county, character
+5. `county_fips` - the county FIPS code, numerical
+6. `office` - the office the election results are for - President for all rows, character
+7. `candidate` - the presidential candidate that the candidate votes in the row refer to, character
+8. `party` - the political party of the candidate, character
+9. `candidatevotes` - the number of votes cast for the candidate, numerical
+10. `totalvotes` - the total number of votes cast in the county for the election, numerical
+
+### Main Vaccination Dataset
+We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing.
+
+Variables:
+
+1. `Date` - the date for which the data in the row is reported in the format mm/dd/yyyy, character
+2. `FIPS` - the county FIPS code, character
+3. `MMWR_week` - the Morbidity and Mortality Weekly Report week, numerical
+4. `Recip_County` - the county name, character
+5. `Recip_State` - the two-letter state abbreviation for the state in which the county is located
+6. `Series_Complete_Pop_Percent` - the percentage of the population that is fully vaccinated, numerical
+7. `Series_Compete_Yes` - the total number of people in the county who are fully vaccinated, numerical
+8. `Series_Complete_12Plus` - the total number of people in the county over 12 years old who are fully vaccinated
+9. `Series_Complete_12Plus_Pop_Percent` - the percentage of the population over 12 years old that is fully vaccinated, numerical
+10. `Series_Complete_18Plus` - the total number of people in the county over 18 years old who are fully vaccinated, numerical
+11. `Series_Complete_18Plus_Pop_Percent` - the percentage of the population over 18 years old that is fully vaccinated, numerical
+10. `Series_Complete_65Plus` - the total number of people in the county over 18 years old who are fully vaccinated, numerical
+11. `Series_Complete_65Plus_Pop_Percent` - the percentage of the population over 18 years old that is fully vaccinated, numerical
+12. `Completeness_pct` - an estimate of how complete the vaccination data is for the county, numerical
+13. `Administered_Dose1_Recip` - number of first vaccine doses administered, numerical
+14. `Administered_Dose1_Pop_Pct` - percentage of the population that has received dose 1, numerical
+15. `Administered_Dose1_Recip_12Plus` - number of first vaccine doses administered to people over 12 years old, numerical
+14. `Administered_Dose1_12PlusPop_Pct` - percentage of the population over 12 years old that has received dose 1, numerical
+15. `Administered_Dose1_Recip_18Plus` - number of first vaccine doses administered to people over 18 years old, numerical
+14. `Administered_Dose1_18PlusPop_Pct` - percentage of the population over 18 years old that has received dose 1, numerical
+15. `Administered_Dose1_Recip_65Plus` - number of first vaccine doses administered to people over 65 years old, numerical
+14. `Administered_Dose1_65PlusPop_Pct` - percentage of the population over 65 years old that has received dose 1, numerical
+1. `SVI_CTGY` - Social Vulnerability Index category (Low, Low-Mod, Mod, Mod-High, High), character
+2. `Series_Complete_Pop_Pct_SVI` - categorizes vaccination levels and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+2. `Series_Complete_Pop_Pct12Plus_SVI` - categorizes vaccination levels in the population over 12 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+2. `Series_Complete_Pop_Pct18Plus_SVI` - categorizes vaccination levels in the population over 18 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+2. `Series_Complete_Pop_Pct65Plus_SVI` - categorizes vaccination levels in the population over 18 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+
+
+
+### Texas Vaccination
+To complete our county-level vaccination data, we collected vaccination data from the Texas Department of Health and Human services COVID-19 Vaccination in Texas Summary.
+
+Variables:
+
+1. `County_Name` - character
+2. `PHR_critical_Pop` - Public Health Region in which the county is located, character
+3. `Estimated_Coverage_(12+_1Dose)` - estimated percentage of the population over 12 that has received one dose (taking into account probable completeness of reporting), numerical
+4. `Estimated_Coverage_(12+_Fully)` - estimated percentage of the population over 12 that has been fully vaccinated (taking into accouCOVIDnt probable completeness of reporting), numerical
+3. `Estimated_Coverage_(65+_1Dose)` - estimated percentage of the population over 65 that has received one dose (taking into account probable completeness of reporting), numerical
+4. `Estimated_Coverage_(65+_Fully)` - estimated percentage of the population over 65 that has been fully vaccinated (taking into account probable completeness of reporting), numerical
+5. `People_Fully_Vaccinated` - actual reported number of people who have been fully vaccinated, numerical
+6. `People_with_at_least_One_Dose` - actual reported number of people with at least one vaccine dose, numerical
+7. `Percentage_Vaccinated` - percentage of total population that has been reported as fully vaccinated, numerical
+8. `Population_16Up` - total population of people at least 16 years old, numerical
+
+
+
+### Small California Counties Vaccination
+To complete our county-level vaccination data, we obtained the total number of people vaccinated and the total number of people who have received at least one dose from all counties in California with fewer than 20,000 residents from [democratandchronicle.com](democratandchronicle.com).
+
+Variables:
+
+1. `County` - the name of the county, character
+2. `FIPS` - county FIPS code, numerical
+3. `One_Dose` - number of people who have received at least one vaccine dose, numerical
+4. `Two_Doses` - number of people who are fully vaccinated, numerical
+
+### Vaccine Hesitancy
+We obtained county-level estimates of the percentage of the population who is hesitant to receive the COVID-19 vaccine from the CDC. The CDC calculates and compiles these estimates based on Household Pulse Survey data. The dataset also includes racial demographics and SVI (Social Vulnerability Index) information (see Main Vaccination Dataset for details on SVI), as well as geographical information because it was designed to produce a map.
+
+Variables:
+
+1. `FIPS Code` - county FIPS code, numerical
+2. `County Name` - character
+3. `State` - state in which the county is located, character
+4. `Estimated Hesitant` - estimated percentage of the population with any degree of vaccine hesitancy, numerical
+5. `Estimated Hesitant` - estimated percentage of the population that is either hesitant to receive the vaccine or unsure about how they feel about the vaccine, numerical
+6. `Estimated Strongly Hesitant` - estimated percentage of the population that is strongly hesitant to receive the vaccine, numerical
+7. `Social Vulnerability Index (SVI)` - CDC/ATSDR Social Vulnerability Index, numerical
+8. `SVI Category` - Social Vulnerability Index category (Low, Low-Mod, Mod, Mod-High, High), character
+9. `level of concern for vaccination rollout` - CDC's estimated level of concern for getting the population of the county vaccinated on a scale of 0 to 1, numerical
+10. `CVAC Level of Concern` - categorical variable describing CDC's level of concern (Very High Concern, High Concern, Moderate Concern, Low Concern, Very Low Concern), character
+11. `Percent adults fully vaccinated against COVID-19 (as of 6/10/21)` - character
+12. `Percent Hispanic` - numerical
+13. `Percent non-Hispanic American Indian/Alaskan` - numerical
+14. `Percent non-Hispanic Asian` - numerical
+15. `Percent non-Hispanic Black` - numerical
+16. `Percent non-Hispanic Native Hawaiian/Pacific Islander` - numerical
+17. `Percent non-Hispanic White` - numerical
+18. `Geographical Point` - ordered pair (longitude, latitude) marking the starting point for the county boundary - character
+19. `County Boundary` - a series of ordered pairs (longitude, latitude) marking the boundary of the county - character
