@@ -43,10 +43,6 @@ download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv
 download_tx_vacc <- function(u, fn, path_raw, path_proc, sheet, update) {
 
 	fn_raw <- paste0(path_raw, fn)
-	fn_proc <- paste0(path_proc, fn)
-	if (file.exists(fn_proc) & !update) {
-		return(readr::read_csv(fn_proc))
-	}
 
 	if (file.exists(fn_raw) & !update) {
 		df <- readr::read_csv(fn_raw)
