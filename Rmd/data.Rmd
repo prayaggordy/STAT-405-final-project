@@ -101,7 +101,7 @@ Variables:
 2. `County Name` - character
 3. `State` - state in which the county is located, character
 4. `Estimated Hesitant` - estimated percentage of the population with any degree of vaccine hesitancy, numerical
-5. `Estimated Hesitant` - estimated percentage of the population that is either hesitant to receive the vaccine or unsure about how they feel about the vaccine, numerical
+5. `Estimated Hesitant or unsure` - estimated percentage of the population that is either hesitant to receive the vaccine or unsure about how they feel about the vaccine, numerical
 6. `Estimated Strongly Hesitant` - estimated percentage of the population that is strongly hesitant to receive the vaccine, numerical
 7. `Social Vulnerability Index (SVI)` - CDC/ATSDR Social Vulnerability Index, numerical
 8. `SVI Category` - Social Vulnerability Index category (Low, Low-Mod, Mod, Mod-High, High), character
