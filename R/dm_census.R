@@ -1,11 +1,18 @@
 library(tidycensus); library(tidyverse); library(magrittr); library(dplyr)
 library(tidyr); library(readr); library(tibble)
 
-xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv",
-													fn = config$data$region_xwalk,
-													path_raw = config$paths$raw,
-													path_proc = config$paths$proc,
-													update = F) {
+dm_xwalk_fips <- function() {
+	tigris::fips_codes %>%
+		dplyr::mutate(county_short_lc = gsub(" County", "", county) %>% tolower(),
+									fips = paste0(state_code, county_code)) %>%
+		dplyr::select(fips, state_name, county, county_short_lc)
+}
+
+dm_xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv",
+														 fn = config$data$region_xwalk,
+														 path_raw = config$paths$raw,
+														 path_proc = config$paths$proc,
+														 update = F) {
 
 	df <- download_data(u = u,
 											fn_full = paste0(path_raw, fn),
