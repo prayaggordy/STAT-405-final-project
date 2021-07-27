@@ -49,9 +49,6 @@ create_sql <- function(path_proc = config$paths$proc,
 							 df = vaccination,
 							 name = "vaccination")
 		add_simple(dcon = dcon,
-							 df = vaccine_hesitancy,
-							 name = "vaccine_hesitancy")
-		add_simple(dcon = dcon,
 							 df = tx_vaccination,
 							 name = "tx_vaccination")
 		add_simple(dcon = dcon,
@@ -60,8 +57,11 @@ create_sql <- function(path_proc = config$paths$proc,
 		add_cases(dcon = dcon,
 							df = covid)
 		add_simple(dcon = dcon,
-							 df = census,
-							 name = "census")
+							 df = census_region,
+							 name = "census_region")
+		add_simple(dcon = dcon,
+							 df = census_county,
+							 name = "census_county")
 
 		dbDisconnect(conn = dcon)
 	}
