@@ -27,7 +27,7 @@ add_cases <- function(dcon,
 							 append = TRUE, row.names = FALSE)
 
 	query <- "
-CREATE TABLE cases2021 AS
+CREATE TABLE cases AS
 SELECT *
 FROM cases
 WHERE date LIKE '___1%';"
