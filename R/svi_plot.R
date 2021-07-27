@@ -4,7 +4,9 @@ config <- read_yaml("config.yaml")
 plot_svi <- function(df_hes = vaccine_hesitancy,
 										 df_vax = vaccination) {
 
-	inner_join(df_vax, df_hes, by = "fips") %>%
+	df_vax %>%
+		dplyr::filter(date == max(date)) %>%
+		inner_join(df_hes, by = "fips") %>%
 		filter(!is.na(svi_category)) %>%
 		mutate(svi_category = forcats::as_factor(svi_category) %>%
 					 	forcats::fct_relevel("Very High Vulnerability",

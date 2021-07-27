@@ -9,12 +9,10 @@ covid <- download_nyt()
 vaccine_hesitancy <- download_vacches()
 census_county <- download_census(geography = "county")
 census_region <- download_census(geography = "region")
-pres <- read_csv(paste0(config$paths$raw, config$data$pres))
+pres <- dm_pres()
 tx_vaccination <- dm_texas_vacc()
 small_ca_vacc <- dm_ca_vacc()
 us_vaccination <- download_vacc()
 vaccination <- dm_combine_vacc()
 
 create_sql()
-
-plot_svi()
