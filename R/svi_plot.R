@@ -1,5 +1,4 @@
 library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra); library(dplyr); library(magrittr)
-config <- read_yaml("config.yaml")
 
 get_vacc_SVI_df <- function(){
 	vacc <- get_vaccine_df()
