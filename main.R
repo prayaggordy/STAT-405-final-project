@@ -3,7 +3,6 @@ config <- read_yaml("config.yaml")
 sapply(list.files(path = "R", full.names = T), source, .GlobalEnv)
 
 covid <- download_nyt()
-census <- download_census()
 vaccine_hesitancy <- download_vacches()
 census_county <- download_census(geography = "county")
 census_region <- download_census(geography = "region")
