@@ -20,7 +20,7 @@ Variables:
 10. totalvotes - the total number of votes cast in the county for the election, numerical
 
 ### Main Vaccination Dataset
-We collected `r length(unique(vaccination$Date))` days' worth of county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing. 
+We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing. 
 
 Variables:
 1. Date - the date for which the data in the row is reported in the format mm/dd/yyyy, character
@@ -54,10 +54,10 @@ Variables:
 
 
 ### Texas Vaccination
-To complete our county-level vaccination data, we collected  `r length(unique(tx_vaccination$date))` days of county-level vaccination data from the Texas Department of Health and Human services COVID-19 Vaccination in Texas Summary. 
+To complete our county-level vaccination data, we collected vaccination data from the Texas Department of Health and Human services COVID-19 Vaccination in Texas Summary. 
 
 Variables: 
-1. County_Name - the county name, character
+1. County_Name - character
 2. PHR_critical_Pop - Public Health Region in which the county is located, character
 3. Estimated_Coverage_(12+_1Dose) - estimated percentage of the population over 12 that has received one dose (taking into account probable completeness of reporting), numerical
 4. Estimated_Coverage_(12+_Fully) - estimated percentage of the population over 12 that has been fully vaccinated (taking into accouCOVIDnt probable completeness of reporting), numerical
@@ -84,7 +84,7 @@ We obtained county-level estimates of the percentage of the population who is he
 
 Variables:
 1. FIPS Code - county FIPS code, numerical
-2. County Name - name of the county, character
+2. County Name - character
 3. State - state in which the county is located, character
 4. Estimated Hesitant - estimated percentage of the population with any degree of vaccine hesitancy, numerical
 5. Estimated Hesitant - estimated percentage of the population that is either hesitant to receive the vaccine or unsure about how they feel about the vaccine, numerical
@@ -103,4 +103,3 @@ Variables:
 18. Geographical Point - ordered pair (longitude, latitude) marking the starting point for the county boundary - character
 19. County Boundary - a series of ordered pairs (longitude, latitude) marking the boundary of the county - character
 
-We collected `r length(unique(covid$date))` days' worth of Covid data—cases and deaths—from the New York Times. These data are at the county level. Some counties, such as those in Washington State where Covid was first recorded in the US, report cases as early as January; others only start reporting in March and beyond.
