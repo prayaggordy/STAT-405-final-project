@@ -115,7 +115,10 @@ dm_combine_vacc <- function(us = us_vaccination,
 		dplyr::bind_rows(tx %>%
 										 	dplyr::mutate(date = max(us$date))) %>%
 		dplyr::bind_rows(ca %>%
-										 	dplyr::mutate(date = max(us$date)))
+										 	dplyr::mutate(date = max(us$date))) %>%
+		dplyr::group_by(date, fips) %>%
+		dplyr::summarize(dplyr::across(c(first_dose, fully_vax), max)) %>%
+		dplyr::ungroup()
 
 	readr::write_csv(df, paste0(path_proc, fn))
 
