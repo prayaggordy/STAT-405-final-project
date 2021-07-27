@@ -1,6 +1,11 @@
 library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra)
 config <- read_yaml("config.yaml")
 
+plot_trump_vacc <- function(df_pres = pres,
+														df_vacc = vaccination) {
+
+}
+
 #blue_demo <- inner_join(filter(presvacc, trump_pct < 0.4), demos)
 #lowvacc_demo <- inner_join(filter(presvacc, pct_vacc < 0.4), demos)
 #lowvacc_blue <- filter(lowvacc_demo, trump_pct < 0.4)
