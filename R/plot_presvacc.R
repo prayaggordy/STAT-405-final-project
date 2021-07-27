@@ -55,7 +55,8 @@ make_race_histogram <- function(df, col_dark, col_light, title, ylim){
 		ylim(0,ylim)
 }
 
-make_race_hist_plots <- function(){
+make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
+																 top_and_blue, top_and_red) {
 
 	p1 <- make_race_histogram(bottom_and_blue, "black", "lightskyblue2", "Democrat, Bottom 10% of Residuals (Low Vax)", 6)
 	p2 <- make_race_histogram(bottom_and_red, "black", "lightsalmon2", "Republican, Bottom 10% of Residuals (Low Vax)", 35)
@@ -66,37 +67,38 @@ make_race_hist_plots <- function(){
 }
 
 race_hist_plot <- function(df_pres = pres,
-													 df_vacc = vaccination) {
+													 df_vacc = vaccination,
+													 df_census = census_county) {
 
 	presvacc <- df_vacc %>%
 		dplyr::filter(date == max(date)) %>%
-		dplyr::inner_join(df_pres, by = "fips")
+		dplyr::inner_join(df_pres, by = "fips") %>%
+		tidyr::drop_na()
 
-	rr.huber <- rlm(presvacc$pct_vacc ~ presvacc$trump_pct)
+	rr.huber <- rlm(presvacc$fully_vax ~ presvacc$percent_trump)
 
-	presvacc <- filter(get_vacc_pres_df(2020.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
-	demos <- get_census_data()
-	presvacc_2016 <- filter(get_vacc_pres_df(2016.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
+	presvacc_resid <- mutate(presvacc, resid = rr.huber$resid) %>%
+		arrange(resid)
 
-	resid_by_county <- data.frame(County = presvacc$County.y, FIPS = presvacc$FIPS, trump_pct = presvacc$trump_pct, resid = rr.huber$resid)
-	resid_sorted <- resid_by_county[order(resid_by_county$resid),]
-	rows <- nrow(resid_sorted)
-	ten_percent <- round(rows*0.1)
-	bottom_resid <- resid_sorted[1:ten_percent,]
-	top_resid <- resid_sorted[(rows-ten_percent):rows,]
+	rows <- nrow(presvacc_resid)
+	ten_percent <- round(rows * 0.1)
+	bottom <- slice_head(presvacc_resid, n = ten_percent) %>%
+		inner_join(df_census, by = "fips")
+	top <- slice_tail(presvacc_resid, n = ten_percent) %>%
+		inner_join(df_census, by = "fips")
 
-	bottom <- inner_join(bottom_resid, demos, by='FIPS')
-	top <- inner_join(top_resid, demos, by = 'FIPS')
+	cutoff <- 0.4
 
+	bottom_and_blue <- filter(bottom, percent_trump < cutoff)
+	bottom_and_red <- filter(bottom, percent_trump > 1 - cutoff)
 
-	bottom_and_blue <- filter(bottom, trump_pct < 0.4)
-	bottom_and_red <- filter(bottom, trump_pct >0.6)
+	top_and_red <- filter(top, percent_trump > 1 - cutoff)
+	top_and_blue <- filter(top, percent_trump < cutoff)
 
-	top_and_red <- filter(top, trump_pct > 0.6)
-	top_and_blue <- filter(top, trump_pct < 0.4)
-
-	plot_trump_vacc()
-	make_race_hist_plots()
+	make_race_hist_plots(bottom_and_blue = bottom_and_blue,
+											 bottom_and_red = bottom_and_red,
+											 top_and_red = top_and_red,
+											 top_and_blue = top_and_blue)
 }
 
 
