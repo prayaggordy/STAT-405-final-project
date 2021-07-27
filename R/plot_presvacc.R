@@ -62,10 +62,16 @@ make_race_hist_plots <- function(){
 	p3 <- make_race_histogram(top_and_blue, "black", "lightskyblue2", "Democrat, Top 10% of Residuals (High Vax)", 9)
 	p4 <- make_race_histogram(top_and_red, "black", "lightsalmon2", "Republican, Top 10% of Residuals (High Vax)", 30)
 
-	grid.arrange(p1, p2, p3, p4, nrow=2)
+	grid.arrange(p1, p2, p3, p4, nrow = 2)
 }
 
-race_hist_plot <- function() {
+race_hist_plot <- function(df_pres = pres,
+													 df_vacc = vaccination) {
+
+	presvacc <- df_vacc %>%
+		dplyr::filter(date == max(date)) %>%
+		dplyr::inner_join(df_pres, by = "fips")
+
 	rr.huber <- rlm(presvacc$pct_vacc ~ presvacc$trump_pct)
 
 	presvacc <- filter(get_vacc_pres_df(2020.0), !is.na(FIPS) & !is.na(pct_vacc) & !is.na(trump_pct))
