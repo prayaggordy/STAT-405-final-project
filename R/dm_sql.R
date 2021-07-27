@@ -44,6 +44,12 @@ create_sql <- function(path_proc = config$paths$proc,
 		file.remove(paste0(path_proc, fn))
 
 		dcon <- dbConnect(SQLite(), dbname = paste0(config$paths$proc, config$data$db))
+		add_simple(dcon = dcon,
+							 df = xwalk_region,
+							 name = "xwalk_region")
+		add_simple(dcon = dcon,
+							 df = xwalk_fips,
+							 name = "xwalk_fips")
 		add_cases(dcon = dcon,
 							df = covid)
 		add_simple(dcon = dcon,
