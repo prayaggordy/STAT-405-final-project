@@ -39,6 +39,7 @@ WHERE date LIKE '___1%';"
 create_sql <- function(path_proc = config$paths$proc,
 											 fn = config$data$db,
 											 update = F) {
+
 	if (!file.exists(paste0(path_proc, fn)) | update) {
 		file.remove(paste0(path_proc, fn))
 
@@ -51,12 +52,6 @@ create_sql <- function(path_proc = config$paths$proc,
 		add_simple(dcon = dcon,
 							 df = vaccine_hesitancy,
 							 name = "vaccine_hesitancy")
-		add_simple(dcon = dcon,
-							 df = tx_vaccination,
-							 name = "tx_vaccination")
-		add_simple(dcon = dcon,
-							 df = small_ca_vacc,
-							 name = "small_ca_vacc")
 		add_cases(dcon = dcon,
 							df = covid)
 		add_simple(dcon = dcon,
