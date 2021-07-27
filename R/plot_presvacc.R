@@ -46,13 +46,17 @@ get_census_data<- function(){
 
 
 make_race_histogram <- function(df, col_dark, col_light, title, ylim){
-	ggplot(df, aes(x=percent_black))+
-		theme_minimal()+
-		ggtitle(title)+
-		xlab("Proportion Black")+
-		geom_histogram(color = col_dark, fill = col_light)+
-		xlim(0,1)+
-		ylim(0,ylim)
+	ggplot(df, aes(x=percent_black)) +
+		theme_minimal() +
+		labs(title = title,
+				 x = "Proportion Black",
+				 y = "Number of counties") +
+		geom_histogram(color = col_dark, fill = col_light) +
+		ylim(0,ylim) +
+		theme(plot.title = element_text(size = 10),
+					plot.title.position = "plot") +
+		scale_x_continuous(labels = scales::percent_format(accuracy = 1),
+											 limits = c(0, 1))
 }
 
 make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
