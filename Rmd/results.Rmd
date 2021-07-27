@@ -14,3 +14,14 @@ There appeared to be a distinct cluster of democratic counties with unexpectedly
 race_hist_plot()
 ```
 
+
+
+### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
+
+As far as we can tell from this chart, no. However, we haven't yet completed any regressions, so all we have is the plot. We want to regress controlling for demographics and vaccine hesitancy.
+
+```{r}
+plot_deaths_pc_vaccine()
+```
+
+
