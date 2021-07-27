@@ -11,6 +11,13 @@ The Midwest and West are very similar in that they both have a peak around the 4
 plot_vax_by_region()
 ```
 
+### How is a county's Social Vulnerability Index related to its rate of vaccination?
+Over time, vaccination levels in higher vulnerability counties have tapered off at lower percentages than those of lower vulnerability counties, which the plot on the right (showing the average vaccination rate of counties over time grouped by SVI category) clearly demonstrates. However, the distributions of vaccination rates in counties of broadly differing SVI categories overlap considerably, as indicated by the histograms on the left, showing that SVI alone is not a strong predictor of county vaccination rates. 
+
+An intriguing feature of the county-level vaccination rate distributions by SVI category is that the very high, high, and moderate vulnerability counties all appear to have a bimodal distribution, with a small peak of very low vaccination levels and a large peak of more moderate vaccination levels. This led us to consider whether there might be a subclass of vulnerable, very low vaccination rate counties in which vaccination rates are influenced by some other variable.
+```{r}
+#whatever Prayag decides to call the function for plotting SVI stuff
+```
 
 
 ### How are the prevailing political views of a county related to its rate of vaccination?
