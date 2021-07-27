@@ -1,0 +1,5 @@
+## Results
+### How are the prevailing political views of a county related to its rate of vaccination?
+As anticipated, there appears to be a strong negative correlation between the percent of the county that voted for Donald Trump in 2020 and the percent of the population that is vaccinated. Donald Trump and other Republicans have consistently shown themselves to be less in favor of lockdown orders, mask mandates, and COVID-19 vaccinations than Democrats, so the counties in which a larger percentage of the votes were cast for Donald Trump in the 2020 presidential election are likely to be those for whom these anti-COVID precautions seemed reasonable. However, there are some outlier counties with far more or fewer people vaccinated than would have been predicted based solely on their political views. The next section explores race as a potential contributing factor predicting COVID-vaccination rates in these outlier counties.
+
+## What are the racial demographics of counties that 
