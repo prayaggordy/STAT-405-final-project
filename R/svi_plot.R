@@ -2,7 +2,8 @@ library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid);
 config <- read_yaml("config.yaml")
 
 
-make_df_for_sviplot <- function(df_hes, df_vax) {
+make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
+																df_vax = vaccination) {
 
 	df_vax %>%
 		dplyr::filter(date == max(date)) %>%
