@@ -108,12 +108,10 @@ dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
 
 dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD",
 											 fn = config$data$va_vacc,
-											 path_raw = config$paths$raw,
 											 path_proc = config$paths$proc,
 											 update = F,
 											 df_census = census_county) {
 
-	fn_raw <- paste0(path_raw, fn)
 	fn_proc <- paste0(path_proc, fn)
 	if (file.exists(fn_proc) & !update) {
 		return(readr::read_csv(fn_proc))
