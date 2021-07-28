@@ -59,7 +59,7 @@ download_census <- function(geography,
 	}
 
 	df <- df %>%
-		select(-moe) %>%
+		dplyr::select(-moe) %>%
 		rename(fips = GEOID, county = NAME) %>%
 		pivot_wider(names_from = variable, values_from = estimate) %>%
 		mutate(across(.cols = male:hispanic, .fns = ~ ./total, .names = "percent_{.col}"))
