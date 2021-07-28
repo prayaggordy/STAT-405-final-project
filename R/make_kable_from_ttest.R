@@ -7,15 +7,15 @@ library(magrittr)
 
 get_kable <- function(ttest) {
 	map_df(list(ttest), broom::tidy) %>%
-		dplyr::select(estimate, estimate1, estimate2,
-									p.value, conf.low, conf.high, alternative) %>%
-		kable(col.names = c("Difference in Means",
-												"Mean, Vulnerable",
-												"Mean, Not Vulnerable",
-												"p value",
-												"95% Confidence Lower Bound",
-												"95% Confidence Upper Bound",
-												"Alternative Hypothesis"))
+		dplyr::select(`Difference in Means` = estimate,
+									`Mean, Vulnerable` = estimate1,
+									`Mean, Not Vulnerable` = estimate2,
+									`p value` = p.value,
+									`95% Confidence Lower Bound` = conf.low,
+									`95% Confidence Upper Bound` = conf.high,
+									`Alternative Hypothesis` = alternative) %>%
+		kable(digits = 3) %>%
+		kableExtra::kable_styling(full_width = T)
 }
 
 
