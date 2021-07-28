@@ -16,8 +16,6 @@ knitr::opts_chunk$set(echo = FALSE,
 ```
 
 ```{r}
-library(magrittr)
-
 source("main.R")
 ```
 
