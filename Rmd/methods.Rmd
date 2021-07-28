@@ -10,7 +10,17 @@ Note: This is an outline of our methods section.
 
 ### t test for SVI data
 ```{r echo = FALSE}
+library(knitr)
+library(kableExtra)
+library(purrr)
+library(broom)
+library(dplyr)
+
+
 data <- get_vuln_not_vuln()
-t.test(unlist(data[1]), unlist(data[2]), alternative = 'less')
+test <- t.test(unlist(data[1]), unlist(data[2]), alternative = 'less')
+
+get_kable(test)
+
 ```
 
