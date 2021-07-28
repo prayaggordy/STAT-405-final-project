@@ -1,7 +1,7 @@
 library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra)
 config <- read_yaml("config.yaml")
 
-get_vacches_data <- function(){
+get_vacches_data <- function() {
 	db <- paste0(config$paths$proc, "finalproject.db")
 	dcon <- dbConnect(SQLite(), dbname = db)
 
