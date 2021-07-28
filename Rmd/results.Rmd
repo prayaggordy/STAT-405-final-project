@@ -35,11 +35,12 @@ There appeared to be a distinct cluster of democratic counties with unexpectedly
 
 ```{r}
 tk <- race_hist_plot()$orig_df %>% 
-	tibble::as_tibble() %>% 
+	tibble::as_tibble(rownames = "Comparison") %>% 
 	magrittr::set_colnames(c("Difference in Mean Proportion Black", "95% Confidence Lower Bound", "95% Confidence Upper Bound", "p-value"))
 
 kable(tk,
-			digits = 4)
+			digits = 4) %>% 
+	kableExtra::kable_styling(full_width = T)
 ```
 
 
