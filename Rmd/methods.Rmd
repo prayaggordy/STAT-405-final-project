@@ -6,4 +6,11 @@ Note: This is an outline of our methods section.
 	* Together, this can suggest whether vaccine hesitancy is a mediator, moderator, or neither
 * Linear regression to examine relationship between vaccination rate and cumulative deaths, controlling for race and partisanship
 	* This can shed light on whether the severity of the pandemic in a county influences residents' desire to get vaccinated
+	
+
+### t test for SVI data
+```{r echo = FALSE}
+data <- get_vuln_not_vuln()
+t.test(unlist(data[1]), unlist(data[2]), alternative = 'less')
+```
 

@@ -14,12 +14,20 @@ make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
 					 											 "High Vulnerability",
 					 											 "Moderate Vulnerability",
 					 											 "Low Vulnerability",
-					 											 "Very Low Vulnerability")) %>% df_vacches
-	df_vacches
+					 											 "Very Low Vulnerability")) -> svi_df
+	svi_df
+}
+
+get_vuln_not_vuln <- function(){
+	df <- make_df_for_sviplot()
+	df %>% dplyr::filter(!((svi_category == "Low Vulnerability") | (svi_category == "Very Low Vulnerability"))) -> vuln
+	df %>% dplyr::filter((svi_category == "Low Vulnerability") | (svi_category == "Very Low Vulnerability")) -> not_vuln
+
+	list(vuln$fully_vax, not_vuln$fully_vax)
 }
 
 plot_svi <- function(){
-		df_vacches <- make_df_for_sviplot()
+		df_vacches <- make_df_for_sviplot(vaccine_hesitancy, vaccination)
 		ggplot(data = df_vacches, aes(x = fully_vax, fill = svi_category)) +
 		geom_histogram() +
 		facet_wrap(~svi_category, scales = "free_y") +
