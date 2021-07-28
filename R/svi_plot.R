@@ -2,8 +2,7 @@ library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid);
 config <- read_yaml("config.yaml")
 
 
-make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
-																df_vax = vaccination) {
+make_df_for_sviplot <- function(df_hes, df_vax) {
 
 	df_vax %>%
 		dplyr::filter(date == max(date)) %>%
@@ -18,17 +17,27 @@ make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
 	svi_df
 }
 
-get_vuln_not_vuln <- function(){
+get_vuln_not_vuln <- function() {
+
 	df <- make_df_for_sviplot()
-	df %>% dplyr::filter(!((svi_category == "Low Vulnerability") | (svi_category == "Very Low Vulnerability"))) -> vuln
-	df %>% dplyr::filter((svi_category == "Low Vulnerability") | (svi_category == "Very Low Vulnerability")) -> not_vuln
+
+	vuln <- df %>%
+		dplyr::filter(!((svi_category == "Low Vulnerability") |
+											(svi_category == "Very Low Vulnerability"))
+									)
+	not_vuln <- df %>%
+		dplyr::filter((svi_category == "Low Vulnerability") |
+										(svi_category == "Very Low Vulnerability")
+									)
 
 	list(vuln$fully_vax, not_vuln$fully_vax)
 }
 
-plot_svi <- function(){
-		df_vacches <- make_df_for_sviplot(vaccine_hesitancy, vaccination)
-		ggplot(data = df_vacches, aes(x = fully_vax, fill = svi_category)) +
+plot_svi <- function(df_hes = vaccine_hesitancy,
+										 df_vax = vaccination) {
+
+	make_df_for_sviplot(df_hes = df_hes, df_vax = df_vax) %>%
+		ggplot(aes(x = fully_vax, fill = svi_category)) +
 		geom_histogram() +
 		facet_wrap(~svi_category, scales = "free_y") +
 		theme_minimal() +
