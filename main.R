@@ -12,6 +12,7 @@ census_region <- download_census(geography = "region")
 pres <- dm_pres()
 tx_vaccination <- dm_texas_vacc()
 small_ca_vacc <- dm_ca_vacc()
+va_vaccination <- dm_va_vacc()
 us_vaccination <- download_vacc()
 vaccination <- dm_combine_vacc()
 
