@@ -70,6 +70,7 @@ make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
 	grid.arrange(p1, p2, p3, p4, nrow = 2)
 }
 
+
 race_hist_plot <- function(df_pres = pres,
 													 df_vacc = vaccination,
 													 df_census = census_county) {
@@ -94,15 +95,28 @@ race_hist_plot <- function(df_pres = pres,
 	cutoff <- 0.4
 
 	bottom_and_blue <- filter(bottom, percent_trump < cutoff)
+	bb_tag <- mutate(bottom_and_blue, orig_df = "bottom_blue")
 	bottom_and_red <- filter(bottom, percent_trump > 1 - cutoff)
+	br_tag <- mutate(bottom_and_red, orig_df = "bottom_red")
 
 	top_and_red <- filter(top, percent_trump > 1 - cutoff)
+	tr_tag <- mutate(top_and_red, orig_df = "top_red")
 	top_and_blue <- filter(top, percent_trump < cutoff)
+	tb_tag <- mutate(top_and_blue, orig_df = "top_blue")
+
+	head(tb_tag)
+
+	bb_tag %>% full_join(br_tag) %>% full_join(tr_tag) %>% full_join(tb_tag)->outliers_tagged
+
+	anova_model <- aov(percent_black ~ orig_df, data = outliers_tagged)
+	summary(anova_model)
+
+	tk <- TukeyHSD(anova_model)
+
 
 	make_race_hist_plots(bottom_and_blue = bottom_and_blue,
 											 bottom_and_red = bottom_and_red,
 											 top_and_red = top_and_red,
 											 top_and_blue = top_and_blue)
+tk
 }
-
-
