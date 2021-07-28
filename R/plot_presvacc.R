@@ -94,14 +94,13 @@ race_hist_plot <- function(df_pres = pres,
 		bind_rows(tb_tag)
 
 	anova_model <- aov(percent_black ~ orig_df, data = outliers_tagged)
-	summary(anova_model)
 
 	tk <- TukeyHSD(anova_model)
-
 
 	make_race_hist_plots(bottom_and_blue = bottom_and_blue,
 											 bottom_and_red = bottom_and_red,
 											 top_and_red = top_and_red,
 											 top_and_blue = top_and_blue)
-tk
+
+	tk
 }
