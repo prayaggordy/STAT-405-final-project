@@ -34,13 +34,12 @@ plot_trump_vacc()
 There appeared to be a distinct cluster of democratic counties with unexpectedly low vaccination rates in the lower left corner of the plot on the previous page. We hypothesized that these may be counties with high percentages of non-white residents. To investigate these and other outlier counties, we performed a linear regression on the relationship between proportion of votes cast for Trump and proportion of population vaccinated. We then examined both Democratic (<40% of all votes in the 2020 presidential race cast for Trump) and Republican (more than 60% of all votes cast for Trump) in the top 10% (unexpectedly high vaccination rates) and bottom 10% of residuals (unexpectedly low vaccination rates) from this linear regression. We then produced histograms of the proportion of Black residents in each of these four categories of counties. For the counties with unexpectedly high vaccination rates (both Democratic and Republican), the distribution of proportion Black residents peaked near 0. For the low-vaccination Republican counties, many counties also had a proportion of Black residents near 0, but there was another peak around 0.25. For the Democratic low-vaccination rate counties, the results were even more striking: a majority of counties had more than 35% Black residents. Clearly, counties with lower vaccination rates than predicted by their political leanings are much more likely to have more Black residents than counties with higher vaccination rates than predicted by their political leanings.
 
 ```{r}
-tk <- race_hist_plot()
-#comparisons <- c("Low Vax Republican vs. Low Vax Democrat", "High Vax Democrat vs. Low Vax Democrat", "High Vax Republican vs. Low Vax Democrat",
-#								 "High Vax Democrat vs. Low Vax Republican", "High Vax Republican vs. Low Vax Republican", "High Vax Republican vs. High Vax Democrat")
-data.frame(tk$orig_df) %>% mutate(p.adj = round(p.adj, 4), diff = round(diff, 4), lwr = round(lwr, 4), upr = round(upr, 4)) -> tk_df
-colnames(tk_df) <- c("Difference in Mean Proportion Black", "95% Confidence Lower Bound", "95% Confidence Upper Bound", "p-value")
+tk <- race_hist_plot()$orig_df %>% 
+	tibble::as_tibble() %>% 
+	magrittr::set_colnames(c("Difference in Mean Proportion Black", "95% Confidence Lower Bound", "95% Confidence Upper Bound", "p-value"))
 
-kable(tk_df)
+kable(tk,
+			digits = 4)
 ```
 
 
