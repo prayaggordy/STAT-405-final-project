@@ -35,7 +35,6 @@ There appeared to be a distinct cluster of democratic counties with unexpectedly
 
 ```{r}
 tk <- race_hist_plot()
-str(tk$orig_df)
 #comparisons <- c("Low Vax Republican vs. Low Vax Democrat", "High Vax Democrat vs. Low Vax Democrat", "High Vax Republican vs. Low Vax Democrat",
 #								 "High Vax Democrat vs. Low Vax Republican", "High Vax Republican vs. Low Vax Republican", "High Vax Republican vs. High Vax Democrat")
 data.frame(tk$orig_df) %>% mutate(p.adj = round(p.adj, 4), diff = round(diff, 4), lwr = round(lwr, 4), upr = round(upr, 4)) -> tk_df

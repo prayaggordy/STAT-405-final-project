@@ -88,8 +88,6 @@ race_hist_plot <- function(df_pres = pres,
 	top_and_blue <- filter(top, percent_trump < cutoff)
 	tb_tag <- mutate(top_and_blue, orig_df = "top_blue")
 
-	head(tb_tag)
-
 	bb_tag %>% full_join(br_tag) %>% full_join(tr_tag) %>% full_join(tb_tag)->outliers_tagged
 
 	anova_model <- aov(percent_black ~ orig_df, data = outliers_tagged)
