@@ -129,7 +129,9 @@ dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.c
 											by = "fips") %>%
 		dplyr::group_by(fips) %>%
 		dplyr::mutate(dplyr::across(c(first_dose, fully_vax), ~ cumsum(.)/total)) %>%
-		dplyr::select(date = administration_date, fips, first_dose, fully_vax)
+		dplyr::ungroup() %>%
+		dplyr::select(date = administration_date, fips, first_dose, fully_vax) %>%
+		dplyr::distinct(date, fips, .keep_all = T)
 
 	readr::write_csv(df, fn_proc)
 
