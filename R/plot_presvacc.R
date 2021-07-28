@@ -25,26 +25,6 @@ plot_trump_vacc <- function(df_pres = pres,
 		scale_y_continuous(labels = scales::percent)
 }
 
-#blue_demo <- inner_join(filter(presvacc, trump_pct < 0.4), demos)
-#lowvacc_demo <- inner_join(filter(presvacc, pct_vacc < 0.4), demos)
-#lowvacc_blue <- filter(lowvacc_demo, trump_pct < 0.4)
-#lowvacc_red <- filter(lowvacc_demo, trump_pct > 0.6)
-
-
-get_census_data<- function(){
-	db <- paste0(config$paths$proc, "finalproject.db")
-	dcon <- dbConnect(SQLite(), dbname = db)
-	res <- dbSendQuery(conn = dcon, "
-	SELECT fips as FIPS, total, med_age, med_income, percent_white, percent_black, percent_hispanic, percent_asian
-	FROM census;
-	")
-	cens <- mutate(dbFetch(res, -1), FIPS = as.numeric(FIPS))
-	dbClearResult(res)
-	cens
-}
-
-
-
 make_race_histogram <- function(df, col_dark, col_light, title, ylim){
 	ggplot(df, aes(x=percent_black)) +
 		theme_minimal() +
