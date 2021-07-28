@@ -2,7 +2,7 @@
 
 ### `census_county` and `census_region`
 
-We used the `tidycensus` package in R to obtain American Community Survey 5-year data for the 2014-2019 span. The ACS is an annual survey that still collect large amounts of data from every single county in the US, so the data is more recent than the 2010 census and is still very comprehensive (2020 census data is not publicly avaiilable yet). We called two different data sets with different geographies: For one set, we got all the desired variables by county, while for the other set, we called the variables by region. The variables we called are as follows:
+We used the `tidycensus` package in R to obtain American Community Survey 5-year data for the 2014-2019 span. The ACS is an annual survey that still collect large amounts of data from every single county in the US, so the data is more recent than the 2010 census and is still very comprehensive (2020 census data is not publicly available yet). We called two different data sets with different geographies: For one set, we got all the desired variables by county, while for the other set, we called the variables by region. The variables we called are as follows:
 
 1. `med_income` (B19013_001 in `tidycensus`): the median income of the chosen geography's population (each county in census_county, each region in census_region).
 2. `male` (B01001_002): the total number of males in the selected geography's population.
@@ -56,7 +56,7 @@ Variables:
 10. `totalvotes` - the total number of votes cast in the county for the election, numerical
 
 ### Main Vaccination Dataset
-We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information. SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, lack of vehicle access, and crowded housing.
+We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information (see appendix for details).
 
 Variables:
 
@@ -119,7 +119,7 @@ Variables:
 4. `Two_Doses` - number of people who are fully vaccinated, numerical
 
 ### Vaccine Hesitancy
-We obtained county-level estimates of the percentage of the population who is hesitant to receive the COVID-19 vaccine from the CDC. The CDC calculates and compiles these estimates based on Household Pulse Survey data. The dataset also includes racial demographics and SVI (Social Vulnerability Index) information (see Main Vaccination Dataset for details on SVI), as well as geographical information because it was designed to produce a map.
+We obtained county-level estimates of the percentage of the population who is hesitant to receive the COVID-19 vaccine from the CDC (see appendix for details). The dataset also includes racial demographics and SVI (Social Vulnerability Index) information (see appendix for details), as well as geographical information because it was designed to produce a map.
 
 Variables:
 
