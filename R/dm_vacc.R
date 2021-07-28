@@ -106,13 +106,46 @@ dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
 	df
 }
 
+dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD",
+											 fn = config$data$va_vacc,
+											 path_proc = config$paths$proc,
+											 update = F,
+											 df_census = census_county) {
+
+	fn_proc <- paste0(path_proc, fn)
+	if (file.exists(fn_proc) & !update) {
+		return(readr::read_csv(fn_proc))
+	}
+
+	df <- readr::read_csv(u) %>%
+		janitor::clean_names() %>%
+		dplyr::mutate(administration_date = as.Date(administration_date, "%m/%d/%Y"),
+									first_dose = as.numeric(vaccine_manufacturer %in% c("Pfizer", "Moderna") &
+																						dose_number == 1)*vaccine_doses_administered_count,
+									fully_vax = as.numeric(!first_dose)*vaccine_doses_administered_count) %>%
+		dplyr::arrange(administration_date) %>%
+		dplyr::inner_join(df_census %>%
+												dplyr::select(fips, total),
+											by = "fips") %>%
+		dplyr::group_by(fips) %>%
+		dplyr::mutate(dplyr::across(c(first_dose, fully_vax), ~ cumsum(.)/total)) %>%
+		dplyr::ungroup() %>%
+		dplyr::select(date = administration_date, fips, first_dose, fully_vax) %>%
+		dplyr::distinct(date, fips, .keep_all = T)
+
+	readr::write_csv(df, fn_proc)
+
+	df
+}
+
 dm_combine_vacc <- function(us = us_vaccination,
 														tx = tx_vaccination,
 														ca = small_ca_vacc,
+														va = va_vaccination,
 														fn = config$data$vax_data_all,
 														path_proc = config$paths$proc) {
 	df <- us %>%
-		dplyr::filter(!(fips %in% c(tx$fips, ca$fips))) %>%
+		dplyr::filter(!(fips %in% c(tx$fips, ca$fips, va$fips))) %>%
 		dplyr::bind_rows(tx %>%
 										 	dplyr::mutate(date = max(us$date))) %>%
 		dplyr::bind_rows(ca %>%
