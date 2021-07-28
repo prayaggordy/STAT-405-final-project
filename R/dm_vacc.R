@@ -133,6 +133,7 @@ dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.c
 		dplyr::select(date = administration_date, fips, first_dose, fully_vax) %>%
 		dplyr::distinct(date, fips, .keep_all = T)
 
+	df$fips <- as.character(df$fips)
 	readr::write_csv(df, fn_proc)
 
 	df
@@ -144,12 +145,14 @@ dm_combine_vacc <- function(us = us_vaccination,
 														va = va_vaccination,
 														fn = config$data$vax_data_all,
 														path_proc = config$paths$proc) {
+	va$fips <- as.character(va$fips)
 	df <- us %>%
 		dplyr::filter(!(fips %in% c(tx$fips, ca$fips, va$fips))) %>%
 		dplyr::bind_rows(tx %>%
 										 	dplyr::mutate(date = max(us$date))) %>%
 		dplyr::bind_rows(ca %>%
 										 	dplyr::mutate(date = max(us$date))) %>%
+		dplyr::bind_rows(va)%>%
 		dplyr::group_by(date, fips) %>%
 		dplyr::summarize(dplyr::across(c(first_dose, fully_vax), max)) %>%
 		dplyr::ungroup()
