@@ -106,6 +106,22 @@ dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
 	df
 }
 
+dm_va_vacc <- function(u = "https://data.virginia.gov/resource/28k2-x2rj.csv",
+											 fn = config$data$va_vacc,
+											 path_raw = config$paths$raw,
+											 path_proc = config$paths$proc,
+											 update = F) {
+
+	fn_raw <- paste0(path_raw, fn)
+	fn_proc <- paste0(path_proc, fn)
+	if (file.exists(fn_proc) & !update) {
+		return(readr::read_csv(fn_proc))
+	}
+
+	df <- readr::read_csv(fn_raw) %>%
+		dplyr::group_by(administration_date, fips)
+}
+
 dm_combine_vacc <- function(us = us_vaccination,
 														tx = tx_vaccination,
 														ca = small_ca_vacc,
