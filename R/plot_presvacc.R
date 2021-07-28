@@ -26,7 +26,7 @@ plot_trump_vacc <- function(df_pres = pres,
 }
 
 make_race_histogram <- function(df, col_dark, col_light, title, ylim){
-	ggplot(df, aes(x=percent_black)) +
+	ggplot(df, aes(x = percent_black)) +
 		theme_minimal() +
 		labs(title = title,
 				 x = "Proportion Black",
@@ -42,10 +42,14 @@ make_race_histogram <- function(df, col_dark, col_light, title, ylim){
 make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
 																 top_and_blue, top_and_red) {
 
-	p1 <- make_race_histogram(bottom_and_blue, "black", "lightskyblue2", "Democrat, Bottom 10% of Residuals (Low Vax)", 6)
-	p2 <- make_race_histogram(bottom_and_red, "black", "lightsalmon2", "Republican, Bottom 10% of Residuals (Low Vax)", 35)
-	p3 <- make_race_histogram(top_and_blue, "black", "lightskyblue2", "Democrat, Top 10% of Residuals (High Vax)", 9)
-	p4 <- make_race_histogram(top_and_red, "black", "lightsalmon2", "Republican, Top 10% of Residuals (High Vax)", 30)
+	p1 <- make_race_histogram(bottom_and_blue, "black", "lightskyblue2",
+														"Democrat, Bottom 10% of Residuals (Low Vax)", 6)
+	p2 <- make_race_histogram(bottom_and_red, "black", "lightsalmon2",
+														"Republican, Bottom 10% of Residuals (Low Vax)", 35)
+	p3 <- make_race_histogram(top_and_blue, "black", "lightskyblue2",
+														"Democrat, Top 10% of Residuals (High Vax)", 9)
+	p4 <- make_race_histogram(top_and_red, "black", "lightsalmon2",
+														"Republican, Top 10% of Residuals (High Vax)", 30)
 
 	grid.arrange(p1, p2, p3, p4, nrow = 2)
 }
