@@ -6,8 +6,9 @@ library(dplyr)
 library(magrittr)
 
 get_kable <- function(ttest) {
-	map_df(list(ttest), tidy) %>%
-		select(estimate, estimate1, estimate2, p.value, conf.low, conf.high, alternative) %>%
+	map_df(list(ttest), broom::tidy) %>%
+		dplyr::select(estimate, estimate1, estimate2,
+									p.value, conf.low, conf.high, alternative) %>%
 		kable(col.names = c("Difference in Means",
 												"Mean, Vulnerable",
 												"Mean, Not Vulnerable",
