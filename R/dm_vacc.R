@@ -106,7 +106,7 @@ dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
 	df
 }
 
-dm_va_vacc <- function(u = "https://data.virginia.gov/resource/28k2-x2rj.csv",
+dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD",
 											 fn = config$data$va_vacc,
 											 path_raw = config$paths$raw,
 											 path_proc = config$paths$proc,
