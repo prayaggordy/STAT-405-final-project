@@ -30,7 +30,7 @@ get_vuln_not_vuln <- function() {
 										(svi_category == "Very Low Vulnerability")
 									)
 
-	list(vuln$fully_vax, not_vuln$fully_vax)
+	list(vuln = vuln$fully_vax, not_vuln = not_vuln$fully_vax)
 }
 
 plot_svi <- function(df_hes = vaccine_hesitancy,
