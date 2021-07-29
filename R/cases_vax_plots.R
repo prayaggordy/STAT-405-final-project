@@ -33,8 +33,8 @@ make_map <- function(df,
 		theme(panel.grid = element_blank(),
 					axis.title = element_blank(),
 					axis.text = element_blank()) +
-		labs(title = stringr::str_wrap(glue::glue(title), 80),
-				 fill = stringr::str_wrap(variable_pretty, 10))
+		labs(title = stringr::str_wrap(glue::glue(title), 35),
+				 fill = stringr::str_wrap(variable_pretty, 1))
 }
 
 plot_regions <- function(df_covid = covid,
