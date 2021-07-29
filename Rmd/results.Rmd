@@ -12,9 +12,11 @@ plot_vax_by_region()
 ```
 
 ### How is a county's Social Vulnerability Index related to its rate of vaccination?
-Over time, vaccination levels in higher vulnerability counties have tapered off at lower percentages than those of lower vulnerability counties, which the second plot (showing the average vaccination rate of counties over time grouped by SVI category) clearly demonstrates. However, the distributions of vaccination rates in counties of broadly differing SVI categories overlap considerably, as indicated by the histograms, showing that SVI alone is not a strong predictor of county vaccination rates. 
+Here, we plotted county-level vaccination rate distributions by SVI category. The distributions appear approximately normal, with the exception of one intriguing feature: the very high, high, and moderate vulnerability counties all seem to have a bimodal distribution, with a small peak of very low vaccination levels and a large peak of more moderate vaccination levels. This led us to consider whether there might be a subclass of vulnerable, very low vaccination rate counties in which vaccination rates are influenced by some other variable, a question we explore later.
 
-An intriguing feature of the county-level vaccination rate distributions by SVI category is that the very high, high, and moderate vulnerability counties all appear to have a bimodal distribution, with a small peak of very low vaccination levels and a large peak of more moderate vaccination levels. This led us to consider whether there might be a subclass of vulnerable, very low vaccination rate counties in which vaccination rates are influenced by some other variable.
+The second plot, which shows average vaccination rate of counties over time grouped by SVI category, clearly demonstrates that average vaccination levels in higher vulnerability counties have tapered off at lower percentages than those of lower vulnerability counties, with divergence beginning around February 2020. Present-day average vaccination levels for the different SVI categories smoothly increase with decreasing vulnerability. 
+
+Given that the histograms for distribution of vaccination rates of broadly differing SVI categories overlap considerably, we wanted to determine whether the present difference in average vaccination rates between vulnerable (Very High, High, and Moderate Vulnerability SVI categories) and non-vulnerable (Low and Very Low Vulnerability) observed in the plot of vaccination rates over time was statistically significant, so we performed a one-sided t test with the alternative hypothesis that vulnerable counties have a lower average vaccination rate than non-vulnerable counties. The results were very significant, with a p-value near 0. 
 
 ```{r}
 plot_svi()
@@ -30,8 +32,11 @@ plot_trump_vacc()
 ```
 
 
-### What are the racial demographics of counties that do not conform to the expected relationship between politics and vaccination?
-There appeared to be a distinct cluster of democratic counties with unexpectedly low vaccination rates in the lower left corner of the plot on the previous page. We hypothesized that these may be counties with high percentages of non-white residents. To investigate these and other outlier counties, we performed a linear regression on the relationship between proportion of votes cast for Trump and proportion of population vaccinated. We then examined both Democratic (<40% of all votes in the 2020 presidential race cast for Trump) and Republican (more than 60% of all votes cast for Trump) in the top 10% (unexpectedly high vaccination rates) and bottom 10% of residuals (unexpectedly low vaccination rates) from this linear regression. We then produced histograms of the proportion of Black residents in each of these four categories of counties. For the counties with unexpectedly high vaccination rates (both Democratic and Republican), the distribution of proportion Black residents peaked near 0. For the low-vaccination Republican counties, many counties also had a proportion of Black residents near 0, but there was another peak around 0.25. For the Democratic low-vaccination rate counties, the results were even more striking: a majority of counties had more than 35% Black residents. Clearly, counties with lower vaccination rates than predicted by their political leanings are much more likely to have more Black residents than counties with higher vaccination rates than predicted by their political leanings.
+### How does the percentage of Black residents in a county relate to its level of vaccination?
+#### What are the racial demographics of counties that do not conform to the expected relationship between politics and vaccination?
+There appeared to be a distinct cluster of democratic counties with unexpectedly low vaccination rates in the lower left corner of the plot on the previous page. We hypothesized that these may be counties with high percentages of non-white residents. To investigate these and other outlier counties, we performed a linear regression on the relationship between proportion of votes cast for Trump and proportion of population vaccinated. We then examined both Democratic (<40% of all votes in the 2020 presidential race cast for Trump) and Republican (more than 60% of all votes cast for Trump) in the top 10% (unexpectedly high vaccination rates) and bottom 10% of residuals (unexpectedly low vaccination rates) from this linear regression. We then produced histograms of the proportion of Black residents in each of these four categories of counties. For the counties with unexpectedly high vaccination rates (both Democratic and Republican), the distribution of proportion Black residents peaked near 0. For the low-vaccination Republican counties, many counties also had a proportion of Black residents near 0, but there was another peak around 0.25. For the Democratic low-vaccination rate counties, the results were even more striking: a majority of counties had more than 35% Black residents. Clearly, counties with lower vaccination rates than predicted by their political leanings are much more likely to have more Black residents than counties with higher vaccination rates than predicted by their political leanings. 
+
+Next, we performed an ANOVA examining the mean percent Black for all four groups of outlier counties (low vaccination, Democrat; low vaccination, Republican; high vaccination, Democrat; high vaccination, Republican) followed by a Tukey Test pairwise comparison of means. All pairs showed significant difference in means at significance level 0.01 except high vaccination, Republican versus high vaccination, Democrat, demonstrating that the racial disparities visible in the histograms are statistically significant. 
 
 ```{r}
 rnames <- tibble::tribble(
@@ -58,7 +63,11 @@ kable(tk,
 	kableExtra::kable_styling(full_width = T)
 ```
 
+#### What are the racial demographics of counties with high levels of vaccine hesitancy and low vaccination rates?
 
+```{r}
+plot_vacches_race()
+```
 
 ### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
 
