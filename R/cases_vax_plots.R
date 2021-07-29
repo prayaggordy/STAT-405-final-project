@@ -60,7 +60,8 @@ plot_regions <- function(df_covid = covid,
 		dplyr::mutate(dplyr::across(.cols = c(cases, deaths),
 																.fns = ~ (./total*100000)/fully_vax,
 																.names = "{.col}_fully_vax")) %>%
-		dplyr::select(fips, region, hesitant_unsure, tidyselect::ends_with("fully_vax"))
+		dplyr::select(fips, region, hesitant_unsure, tidyselect::ends_with("fully_vax")) %>%
+		tidyr::drop_na()
 
 	region_list <- list(midwest = "Midwest",
 											northeast = "Northeast",
