@@ -30,7 +30,7 @@ data:
   tx_fips: "txfips.csv"
 
 paper:
-  sections: ["introduction", "data", "methods", "results", "discussion", "appendix"]
+  sections: ["introduction", "data", "results", "discussion", "appendix"]
 
 maps:
   scale_breaks:
