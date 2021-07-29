@@ -1,20 +1,3 @@
-add_pres_results <- function(dcon,
-														 df,
-														 name = "countypres") {
-
-	dbWriteTable(conn = dcon, name = name, value = df,
-							 append = TRUE, row.names = FALSE)
-
-	query <- "
-CREATE TABLE countypres_2016_2020 AS
-SELECT *
-FROM countypres
-WHERE year = 2020 OR year = 2016;"
-	dbSendQuery(dcon, query)
-
-	dbRemoveTable(conn = dcon, name = name)
-}
-
 add_simple <- function(dcon, df, name) {
 	dbWriteTable(conn = dcon, name = name, value = df,
 							 append = TRUE, row.names = FALSE)
@@ -40,18 +23,23 @@ create_sql <- function(path_proc = config$paths$proc,
 											 fn = config$data$db,
 											 update = F) {
 
-	if (!file.exists(paste0(path_proc, fn)) | update) {
-		file.remove(paste0(path_proc, fn))
+	fn_proc <- paste0(path_proc, fn)
 
-		dcon <- dbConnect(SQLite(), dbname = paste0(config$paths$proc, config$data$db))
+	if (!file.exists(fn_proc) | update) {
+		if (file.exists(fn_proc))
+			file.remove(fn_proc)
+
+		dcon <- dbConnect(SQLite(), dbname = fn_proc)
+		print(dbListTables(dcon))
 		add_simple(dcon = dcon,
 							 df = xwalk_region,
 							 name = "xwalk_region")
 		add_simple(dcon = dcon,
 							 df = xwalk_fips,
 							 name = "xwalk_fips")
-		add_cases(dcon = dcon,
-							df = covid)
+		add_simple(dcon = dcon,
+							 df = covid,
+							 name = "covid")
 		add_simple(dcon = dcon,
 							 df = vaccine_hesitancy,
 							 name = "vaccine_hesitancy")
