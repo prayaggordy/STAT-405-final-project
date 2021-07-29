@@ -23,10 +23,14 @@ plot_regions <- function(df_covid = covid,
 
 	df <- df_census %>%
 		dplyr::inner_join(df_covid %>%
-												dplyr::filter(date == max(date)),
+												dplyr::group_by(fips) %>%
+												dplyr::filter(date == max(date)) %>%
+												dplyr::ungroup(),
 											by = "fips") %>%
 		dplyr::inner_join(df_vax %>%
-												dplyr::filter(date == max(date)),
+												dplyr::group_by(fips) %>%
+												dplyr::filter(date == max(date)) %>%
+												dplyr::ungroup(),
 											by = "fips") %>%
 		dplyr::mutate(state_fips = stringr::str_sub(fips, end = 2)) %>%
 		dplyr::inner_join(xwalk, by = "state_fips") %>%
