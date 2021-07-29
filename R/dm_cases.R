@@ -10,7 +10,8 @@ download_nyt <- function(u = "https://raw.githubusercontent.com/nytimes/covid-19
 
 	df <- download_data(u = u,
 											fn_full = paste0(path_raw, fn),
-											update = update)
+											update = update) %>%
+		dm_states_remove()
 
 	# this is where we do any data processing
 
