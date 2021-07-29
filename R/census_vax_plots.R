@@ -1,10 +1,9 @@
 library(tidyr); library(dplyr); library(tidycensus); library(stringr); library(tigris)
 
-plot_vax_by_region <- function(df = vaccination,
+plot_vax_by_region <- function(df = vax_today,
 															 xwalk = xwalk_region,
 															 fips = fips_codes) {
 	df <- df %>%
-		filter(date == max(date)) %>%
 		mutate(state_fips = str_sub(fips, end = 2)) %>%
 		inner_join(xwalk, by = "state_fips") %>%
 		mutate(region = str_remove(region, " Region"))

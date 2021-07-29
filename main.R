@@ -15,6 +15,10 @@ small_ca_vacc <- dm_ca_vacc()
 va_vaccination <- dm_va_vacc()
 us_vaccination <- download_vacc()
 vaccination <- dm_combine_vacc()
+vax_today <- vaccination %>%
+	dplyr::group_by(fips) %>%
+	dplyr::filter(date == max(date)) %>%
+	dplyr::ungroup()
 region_plots <- plot_regions()
 
 create_sql()

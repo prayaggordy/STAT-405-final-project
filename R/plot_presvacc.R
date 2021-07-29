@@ -2,9 +2,8 @@ library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid);
 config <- read_yaml("config.yaml")
 
 plot_trump_vacc <- function(df_pres = pres,
-														df_vacc = vaccination) {
+														df_vacc = vax_today) {
 	df_vacc %>%
-		dplyr::filter(date == max(date)) %>%
 		dplyr::inner_join(df_pres, by = "fips") %>%
 		ggplot(aes(x = percent_trump, y = fully_vax)) +
 		geom_rect(mapping = aes(xmin = 0, xmax = 0.5,
@@ -56,11 +55,10 @@ make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
 
 
 race_hist_plot <- function(df_pres = pres,
-													 df_vacc = vaccination,
+													 df_vacc = vax_today,
 													 df_census = census_county) {
 
 	presvacc <- df_vacc %>%
-		dplyr::filter(date == max(date)) %>%
 		dplyr::inner_join(df_pres, by = "fips") %>%
 		tidyr::drop_na()
 
