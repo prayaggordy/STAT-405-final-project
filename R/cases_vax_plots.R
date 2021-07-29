@@ -20,6 +20,9 @@ make_map <- function(df,
 		dplyr::inner_join(df, by = "fips") %>%
 		dplyr::filter(grepl(pattern = region_name, x = region))
 
+	if (region_name == "Region")
+		region_name <- "US"
+
 	invisible(variable)
 
 	ggplot(df, aes(fill = !!ensym(variable))) +
@@ -59,7 +62,8 @@ plot_regions <- function(df_covid = covid,
 	region_list <- list(midwest = "Midwest",
 											northeast = "Northeast",
 											south = "South",
-											west = "West")
+											west = "West",
+											us = "Region")
 
 	lapply(setNames(names(map_vars), names(map_vars)),
 				 function(v) {
