@@ -1,15 +1,42 @@
 ## Results
 
 ### How do vaccination levels differ by geographic region in the US?
-The faceted histogram above demonstrates several important ideas. First, the Northeast region of the country displays a clear lead in the percentage of counties that have higher levels of full vaccination among residents. A large majority of counties in the Northeast are at least 65% fully vaccinated, and many are reaching the 70-75% full vaccination levels that can signal the beginnings of herd immunity. Furthermore, the data is more centralized in the Northeast compared to the other regions, suggesting that there is not a large level of hesitancy or belief in misinformation about the vaccine.
+```{r}
+plot_vax_by_region()
+```
+The  faceted histogram above was obtained by combining census data at a county level with the county-level vaccination data from the CDC and state sources. We used the variable "fully_vax" as the data for the histogram and faceted by the census region (South, West, Midwest, Northeast) of the county.
+
+The histogram demonstrates several important ideas. First, the Northeast region of the country displays a clear lead in the percentage of counties that have higher levels of full vaccination among residents. A large majority of counties in the Northeast are at least 65% fully vaccinated, and many are reaching the 70-75% full vaccination levels that can signal the beginnings of herd immunity. Furthermore, the data is more centralized in the Northeast compared to the other regions, suggesting that there is not a large level of hesitancy or belief in misinformation about the vaccine.
 
 Meanwhile, the South is lagging behind the other three regions as a large portion of its counties are still in the 35-45% fully vaccinated range. Additionally, there is wider range in the data, and there are many counties that are still below a 25% full vaccination threshold. This could be a result of or correlated to several influencing factors which will be discussed in other results, including demographics, hesitancy, and politics.
 
 The Midwest and West are very similar in that they both have a peak around the 45-55% range. Both regions display a wide range of vaccination levels in both directions, suggesting that there is a wide array of willingness to get vaccinated within those regions.
 
 ```{r}
-plot_vax_by_region()
+library(gridExtra); library(grid); library(lattice)
+region_plots <- plot_regions()
+grid.arrange(nrow=2, ncol=2,
+						 grobs=list(region_plots$fully_vax$midwest,
+						 					 region_plots$fully_vax$northeast,
+						 					 region_plots$fully_vax$west,
+						 					 region_plots$fully_vax$south))
 ```
+We created these maps using ggplot's sf geometry, the county-level total population census data, total case data, and total full vaccination data.
+
+These maps show a county-level breakdown of the proportion of the population that is fully vaccinated. Once again, it is clear that there are regions of the country, especially the South (even more specifically, Georgia), that are severely under-vaccinated. In fact, only the Northeast region is reaching higher levels of vaccination, and while there are pockets of high vaccination in the West and Midwest, such as in the Seattle area, those regions do not have a uniformly high vaccination rate thus far. Perhaps most alarming is that despite many counties reaching a 45% to 65% full vaccination rate, only a few select counties have crossed the 65% full vaccination threshold thus far. This is important, as many scientists place the threshold for herd immunity in a community at around 65-70% full vaccination, suggesting that as a country, we are quite far from reaching a safe vaccination level.
+
+```{r}
+library(gridExtra); library(grid); library(lattice)
+region_plots <- plot_regions()
+grid.arrange(nrow=2, ncol=2,
+						 grobs=list(region_plots$cases_fully_vax$midwest,
+						 					 region_plots$cases_fully_vax$northeast,
+						 					 region_plots$cases_fully_vax$west,
+						 					 region_plots$cases_fully_vax$south))
+```
+These maps are colored on a gradient based on the ratio of cases per 100k to the full vaccination percentage. In order to do this, we created a cases/100k variable using a combination of case and census data and then a ratio variable using the cases/100k and the fully vaccinated proportion.
+
+We believed that this variable would be interesting in that it highlights the counties with either high case rates, low vaccination rate, or both. 
 
 ### How is a county's Social Vulnerability Index related to its rate of vaccination?
 Here, we plotted county-level vaccination rate distributions by SVI category. The distributions appear approximately normal, with the exception of one intriguing feature: the very high, high, and moderate vulnerability counties all seem to have a bimodal distribution, with a small peak of very low vaccination levels and a large peak of more moderate vaccination levels. This led us to consider whether there might be a subclass of vulnerable, very low vaccination rate counties in which vaccination rates are influenced by some other variable, a question we explore later.
