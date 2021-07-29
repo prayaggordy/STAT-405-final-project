@@ -35,7 +35,7 @@ make_map <- function(df,
 
 plot_regions <- function(df_covid = covid,
 												 df_census = census_county,
-												 df_vax = vaccination,
+												 df_vax = vax_today,
 												 xwalk = xwalk_region,
 												 map_vars = config$maps$cns) {
 
@@ -45,10 +45,7 @@ plot_regions <- function(df_covid = covid,
 												dplyr::filter(date == max(date)) %>%
 												dplyr::ungroup(),
 											by = "fips") %>%
-		dplyr::inner_join(df_vax %>%
-												dplyr::group_by(fips) %>%
-												dplyr::filter(date == max(date)) %>%
-												dplyr::ungroup(),
+		dplyr::inner_join(df_vax,
 											by = "fips") %>%
 		dplyr::mutate(state_fips = stringr::str_sub(fips, end = 2)) %>%
 		dplyr::inner_join(xwalk, by = "state_fips") %>%
