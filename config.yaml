@@ -35,8 +35,14 @@ paper:
 maps:
   scale_breaks:
     fully_vax: [0.25, 0.45, 0.65]
-    counts_fully_vax: [0.23, 0.30, 0.39]
-  fills: ["red4", "red1", "steelblue2", "blue2"]
+    cases_fully_vax: [23000, 30000, 39000]
+    deaths_fully_vax: [23000, 30000, 39000]
+  fills:
+    cols: ["red4", "red1", "steelblue2", "blue2"]
+    rev:
+      fully_vax: FALSE
+      cases_fully_vax: TRUE
+      deaths_fully_vax: TRUE
   cns:
     fully_vax: "Fully vaccinated proportion"
     cases_fully_vax: "Cases per 100,000 weighted by vaccination rate"

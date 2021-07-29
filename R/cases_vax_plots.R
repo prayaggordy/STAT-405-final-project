@@ -4,11 +4,15 @@ make_map <- function(df,
 										 region_name,
 										 variable,
 										 variable_pretty,
+										 fill_rev = config$maps$fills$rev,
 										 title = "Counties in the {region_name} by {tolower(variable_pretty)}",
 										 scale_breaks = config$maps$scale_breaks,
-										 fills = config$maps$fills) {
+										 fills = config$maps$fills$cols) {
 
 	data("county_laea")
+
+	if (fill_rev[[variable]])
+		fills <- rev(fills)
 
 	df <- county_laea %>%
 		dplyr::rename(fips = GEOID) %>%
