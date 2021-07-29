@@ -36,6 +36,8 @@ charts:
   cols:
     svi: ["#f80808", "#eb7606", "#ded904", "#71d003", "#0bc202"]
 
+states_remove: ["02", "15"]  # Alaska and Hawaii
+
 maps:
   scale_breaks:
     fully_vax:

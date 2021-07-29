@@ -4,6 +4,7 @@ sapply(list.files(path = "R", full.names = T), source, .GlobalEnv)
 
 xwalk_region <- dm_xwalk_regions()
 xwalk_fips <- dm_xwalk_fips()
+states_remove <- dm_states_remove()
 
 covid <- download_nyt()
 vaccine_hesitancy <- download_vacches()
