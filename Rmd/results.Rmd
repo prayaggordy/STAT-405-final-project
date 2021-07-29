@@ -1,6 +1,6 @@
 ## Results
 
-### County Vaccination Histogram by Region
+### How do vaccination levels differ by geographic region in the US?
 The faceted histogram above demonstrates several important ideas. First, the Northeast region of the country displays a clear lead in the percentage of counties that have higher levels of full vaccination among residents. A large majority of counties in the Northeast are at least 65% fully vaccinated, and many are reaching the 70-75% full vaccination levels that can signal the beginnings of herd immunity. Furthermore, the data is more centralized in the Northeast compared to the other regions, suggesting that there is not a large level of hesitancy or belief in misinformation about the vaccine.
 
 Meanwhile, the South is lagging behind the other three regions as a large portion of its counties are still in the 35-45% fully vaccinated range. Additionally, there is wider range in the data, and there are many counties that are still below a 25% full vaccination threshold. This could be a result of or correlated to several influencing factors which will be discussed in other results, including demographics, hesitancy, and politics.
@@ -25,7 +25,7 @@ plot_vax_over_time()
 
 
 ### How are the prevailing political views of a county related to its rate of vaccination?
-As anticipated, there appears to be a definite negative correlation between the percent of the county that voted for Donald Trump in 2020 and the percent of the population that is vaccinated. Donald Trump and other Republicans have consistently shown themselves to be less in favor of lockdown orders, mask mandates, and COVID-19 vaccinations than Democrats, so the counties in which a larger percentage of the votes were cast for Donald Trump in the 2020 presidential election are likely to be those for whom these anti-COVID precautions seemed reasonable. However, there are  outlier counties in the lower left quadrant of the plot with far more or fewer people vaccinated than would have been predicted based solely on their political views. The next section explores race as a potential contributing factor predicting COVID-vaccination rates in these outlier counties.
+As anticipated, there appears to be a definite negative correlation between the percent of the county that voted for Donald Trump in 2020 and the percent of the population that is vaccinated. Donald Trump and other Republicans have consistently shown themselves to be less in favor of lockdown orders, mask mandates, and COVID-19 vaccinations than Democrats, so the counties in which a larger percentage of the votes were cast for Donald Trump in the 2020 presidential election are likely to be those for whom these anti-COVID precautions seemed reasonable. However, there are outlier with far more or fewer people vaccinated than would have been predicted based solely on their political views. In particular, there was a cluster of Democratic counties with unexpectedly low vaccination rates. The next section explores race as a potential contributing factor predicting COVID-vaccination rates in outlier counties.
 
 ```{r}
 plot_trump_vacc()
@@ -64,6 +64,9 @@ kable(tk,
 ```
 
 #### What are the racial demographics of counties with high levels of vaccine hesitancy and low vaccination rates?
+Because political values have already been identified as a predictor of vaccination, we decided to filter by percent voting for Donald Trump before examining race versus vaccine hesitancy. Additionally, we were particularly interested understanding the factors controlling vaccination in the previously identified cluster of low-vaccination Democratic counties, so we chose to examine only counties in which less than 40% of the votes in the 2020 presidential election were cast for Donald Trump. Finally, because there are a large number of counties with close to 0% Black residents and these are not relevant to our examination of vaccine hesitancy in Black communities, we limited the counties to only those with a Black population of 5% or greater. Once we had selected these counties, we plotted the estimated percentage of the population that was hesitant or unsure about the Covid vaccine versus the percentage of the population consisting of Black residents and conducted a linear regression. Ultimately, we sought to investigate whether there was a correlation between the percent of the population that was Black and levels of vaccine hesitancy in Democratic counties. 
+
+We found that among Democratic counties with more than 5% Black residents, vaccine hesitancy was indeed correlated with race. This suggests our previous observation that undervaccinated counties are more likely to have larger Black populations may result from greater reluctance of residents in these counties to accept the vaccine, rather than stemming from limited vaccine supply and distribution disparities, although the latter possibility cannot be ruled out.
 
 ```{r}
 plot_vacches_race()
