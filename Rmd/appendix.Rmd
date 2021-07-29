@@ -1,1 +1,18 @@
 ## Appendix
+
+### How does CDC estimate vaccine hesitancy?
+
+The CDC calculates and compiles these estimates based on the U.S. Census Bureau's Household Pulse Survey data. Note that they provide the following note about the most updated version of the vaccine hesitancy data, which was used in our report: "Due to the change in the survey instrument regarding intention to vaccinate, our estimates for “hesitant or unsure” or “hesitant” are not directly comparable with prior Household Pulse Survey data and should not be used to examine trends in hesitancy prior to April 14, 2021." Estimates are based on the answers to the following question:
+“Once a vaccine to prevent COVID-19 is available to you, would you…get a vaccine?”, the answer to which is chosen from the following opens:
+1) “definitely get a vaccine”; 
+2) “probably get a vaccine”; 
+3) “unsure”; 
+4) “probably not get a vaccine”; 
+5) “definitely not get a vaccine.” 
+Respondents were classified as "strongly hesitant" if they indicated that they would "definitely not" receive a vaccine. The category "hesitant" includes responses “probably not” or “definitely not”. The category "hesitant or unsure" is the broadest and includes "probably not", “unsure”, or “definitely not”.
+
+### How are Social Vulnerability Indices calculated?
+
+SVIs are produced by the CDC and Agency for Toxic Substances and Disease Registry based on US Census data and take into account factors like poverty, education levels, ethnicity makeup, family characteristics, lack of vehicle access, and crowded housing. SVIs are assigned a value between 0 and 1 according to this information, where 0 is least vulnerable and 1 is most vulnerable. 
+
+Counties are classified as having "Very Low" social vulnerability if their SVI is from 0-0.19, "Low" if it is between 0.20 and 0.39, "Moderate" if it is between 0.4 and 0.59, "High" if it is between 0.60 and 0.79, and "Very High" if it is 0.8 or above.

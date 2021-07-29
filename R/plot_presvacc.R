@@ -25,28 +25,8 @@ plot_trump_vacc <- function(df_pres = pres,
 		scale_y_continuous(labels = scales::percent)
 }
 
-#blue_demo <- inner_join(filter(presvacc, trump_pct < 0.4), demos)
-#lowvacc_demo <- inner_join(filter(presvacc, pct_vacc < 0.4), demos)
-#lowvacc_blue <- filter(lowvacc_demo, trump_pct < 0.4)
-#lowvacc_red <- filter(lowvacc_demo, trump_pct > 0.6)
-
-
-get_census_data<- function(){
-	db <- paste0(config$paths$proc, "finalproject.db")
-	dcon <- dbConnect(SQLite(), dbname = db)
-	res <- dbSendQuery(conn = dcon, "
-	SELECT fips as FIPS, total, med_age, med_income, percent_white, percent_black, percent_hispanic, percent_asian
-	FROM census;
-	")
-	cens <- mutate(dbFetch(res, -1), FIPS = as.numeric(FIPS))
-	dbClearResult(res)
-	cens
-}
-
-
-
 make_race_histogram <- function(df, col_dark, col_light, title, ylim){
-	ggplot(df, aes(x=percent_black)) +
+	ggplot(df, aes(x = percent_black)) +
 		theme_minimal() +
 		labs(title = title,
 				 x = "Proportion Black",
@@ -62,13 +42,18 @@ make_race_histogram <- function(df, col_dark, col_light, title, ylim){
 make_race_hist_plots <- function(bottom_and_blue, bottom_and_red,
 																 top_and_blue, top_and_red) {
 
-	p1 <- make_race_histogram(bottom_and_blue, "black", "lightskyblue2", "Democrat, Bottom 10% of Residuals (Low Vax)", 6)
-	p2 <- make_race_histogram(bottom_and_red, "black", "lightsalmon2", "Republican, Bottom 10% of Residuals (Low Vax)", 35)
-	p3 <- make_race_histogram(top_and_blue, "black", "lightskyblue2", "Democrat, Top 10% of Residuals (High Vax)", 9)
-	p4 <- make_race_histogram(top_and_red, "black", "lightsalmon2", "Republican, Top 10% of Residuals (High Vax)", 30)
+	p1 <- make_race_histogram(bottom_and_blue, "black", "lightskyblue2",
+														"Democrat, Bottom 10% of Residuals (Low Vax)", 6)
+	p2 <- make_race_histogram(bottom_and_red, "black", "lightsalmon2",
+														"Republican, Bottom 10% of Residuals (Low Vax)", 35)
+	p3 <- make_race_histogram(top_and_blue, "black", "lightskyblue2",
+														"Democrat, Top 10% of Residuals (High Vax)", 9)
+	p4 <- make_race_histogram(top_and_red, "black", "lightsalmon2",
+														"Republican, Top 10% of Residuals (High Vax)", 30)
 
 	grid.arrange(p1, p2, p3, p4, nrow = 2)
 }
+
 
 race_hist_plot <- function(df_pres = pres,
 													 df_vacc = vaccination,
@@ -94,15 +79,28 @@ race_hist_plot <- function(df_pres = pres,
 	cutoff <- 0.4
 
 	bottom_and_blue <- filter(bottom, percent_trump < cutoff)
+	bb_tag <- mutate(bottom_and_blue, orig_df = "bottom_blue")
 	bottom_and_red <- filter(bottom, percent_trump > 1 - cutoff)
+	br_tag <- mutate(bottom_and_red, orig_df = "bottom_red")
 
 	top_and_red <- filter(top, percent_trump > 1 - cutoff)
+	tr_tag <- mutate(top_and_red, orig_df = "top_red")
 	top_and_blue <- filter(top, percent_trump < cutoff)
+	tb_tag <- mutate(top_and_blue, orig_df = "top_blue")
+
+	outliers_tagged <- bb_tag %>%
+		bind_rows(br_tag) %>%
+		bind_rows(tr_tag) %>%
+		bind_rows(tb_tag)
+
+	anova_model <- aov(percent_black ~ orig_df, data = outliers_tagged)
+
+	tk <- TukeyHSD(anova_model)
 
 	make_race_hist_plots(bottom_and_blue = bottom_and_blue,
 											 bottom_and_red = bottom_and_red,
 											 top_and_red = top_and_red,
 											 top_and_blue = top_and_blue)
+
+	tk
 }
-
-
