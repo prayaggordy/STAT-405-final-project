@@ -33,7 +33,8 @@ download_vacches <- function(u = "https://data.cdc.gov/api/views/q9mh-h2tw/rows.
 									hesitant_strongly = estimated_strongly_hesitant,
 									svi = social_vulnerability_index_svi,
 									svi_category) %>%
-		dplyr::mutate(fips = stringr::str_pad(fips, width = 5, side = "left", pad = "0"))
+		dplyr::mutate(fips = stringr::str_pad(fips, width = 5, side = "left", pad = "0")) %>%
+		dm_states_remove()
 
 	write_csv(df, fn_proc)
 

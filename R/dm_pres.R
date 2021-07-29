@@ -10,6 +10,7 @@ dm_pres <- function(fn = config$data$pres,
 		dplyr::summarize(candidatevotes = sum(candidatevotes)) %>%
 		dplyr::ungroup() %>%
 		dplyr::mutate(percent_trump = candidatevotes/totalvotes) %>%
-		dplyr::select(fips, percent_trump)
+		dplyr::select(fips, percent_trump) %>%
+		dm_states_remove()
 
 }

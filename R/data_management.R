@@ -15,3 +15,11 @@ download_data <- function(u,
 
 	df
 }
+
+dm_states_remove <- function(df,
+														 states_remove = config$states_remove) {
+	df %>%
+		dplyr::mutate(state_fips = stringr::str_sub(fips, end = 2)) %>%
+		dplyr::filter(!(state_fips %in% states_remove)) %>%
+		dplyr::select(-state_fips)
+}

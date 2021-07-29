@@ -32,8 +32,10 @@ download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv
 									first_dose = administered_dose1_pop_pct,
 									fully_vax = series_complete_pop_pct) %>%
 		filter(fips != "UNK") %>%
-		mutate(date = as.Date(date, "%m/%d/%Y"),
-					 across(c(first_dose, fully_vax), ~as.numeric(.)/100))
+		dplyr::mutate(date = as.Date(date, "%m/%d/%Y"),
+									first_dose = as.numeric(first_dose)/100,
+									fully_vax = as.numeric(fully_vax)/100) %>%
+		dm_states_remove()
 
 	write_csv(df, fn_proc)
 
@@ -147,6 +149,7 @@ dm_combine_vacc <- function(us = us_vaccination,
 
 	df <- us %>%
 		dplyr::filter(!(fips %in% c(tx$fips, ca$fips, va$fips))) %>%
+		dm_states_remove() %>%
 		dplyr::bind_rows(tx %>%
 										 	dplyr::mutate(date = max(us$date),
 										 								fips = as.character(fips))) %>%
