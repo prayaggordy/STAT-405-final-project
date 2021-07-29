@@ -34,7 +34,7 @@ get_df_svi_race <- function(df_svi = make_df_for_sviplot(), svi_upper, svi_lower
 	svi_df
 }
 
-make_svi_race_violinplot <- function(svi_upper, svi_lower){
+make_svi_race_violinplot <- function(svi_upper, svi_lower, title){
 	df = get_df_svi_race(svi_upper = svi_upper, svi_lower=svi_lower)
 	vaccine_tag <- function(num){
 		if (num < 0.15){
@@ -50,7 +50,7 @@ make_svi_race_violinplot <- function(svi_upper, svi_lower){
 		theme_minimal()+
 		labs(x = "Vaccination Level",
 				 y = "Percent Black",
-				 title = "Percent Black for Low Vaccination versus High Vaccination Vulnerable Counties",
+				 title = title,
 				 fill = "Vaccination Level")+
 		scale_y_continuous(labels = scales::percent)+
 		geom_violin()
