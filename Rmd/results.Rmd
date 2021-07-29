@@ -63,9 +63,10 @@ kable(tk,
 	kableExtra::kable_styling(full_width = T)
 ```
 
-#### What are the racial demographics of counties with high SVIs and low vaccination rates?
+#### What are the racial demographics of counties with high levels of vaccine hesitancy and low vaccination rates?
 
 ```{r}
+plot_vacches_race()
 ```
 
 ### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
