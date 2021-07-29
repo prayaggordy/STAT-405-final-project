@@ -144,12 +144,17 @@ dm_combine_vacc <- function(us = us_vaccination,
 														va = va_vaccination,
 														fn = config$data$vax_data_all,
 														path_proc = config$paths$proc) {
+
 	df <- us %>%
 		dplyr::filter(!(fips %in% c(tx$fips, ca$fips, va$fips))) %>%
 		dplyr::bind_rows(tx %>%
-										 	dplyr::mutate(date = max(us$date))) %>%
+										 	dplyr::mutate(date = max(us$date),
+										 								fips = as.character(fips))) %>%
 		dplyr::bind_rows(ca %>%
-										 	dplyr::mutate(date = max(us$date))) %>%
+										 	dplyr::mutate(date = max(us$date),
+										 								fips = as.character(fips))) %>%
+		dplyr::bind_rows(va %>%
+										 	dplyr::mutate(fips = as.character(fips))) %>%
 		dplyr::group_by(date, fips) %>%
 		dplyr::summarize(dplyr::across(c(first_dose, fully_vax), max)) %>%
 		dplyr::ungroup()
