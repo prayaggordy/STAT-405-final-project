@@ -39,7 +39,28 @@ There appeared to be a distinct cluster of democratic counties with unexpectedly
 Next, we performed an ANOVA examining the mean percent Black for all four groups of outlier counties (low vaccination, Democrat; low vaccination, Republican; high vaccination, Democrat; high vaccination, Republican) followed by a Tukey Test pairwise comparison of means. All pairs showed significant difference in means at significance level 0.01 except high vaccination, Republican versus high vaccination, Democrat, demonstrating that the racial disparities visible in the histograms are statistically significant. 
 
 ```{r}
-race_hist_plot()
+rnames <- tibble::tribble(
+	~ "rn", ~ "Comparison",
+	"bottom_red-bottom_blue", "Bottom 10% GOP vs bottom 10% Dem",
+	"top_blue-bottom_blue", "Top 10% Dem vs bottom 10% dem", 
+	"top_red-bottom_blue", "Top 10% GOP vs bottom 10% Dem", 
+	"top_blue-bottom_red", "Top 10% Dem vs bottom 10% GOP", 
+	"top_red-bottom_red", "Top 10% GOP vs bottom 10% GOP", 
+	"top_red-top_blue", "Top 10% GOP vs top 10% Dem"
+)
+
+tk <- race_hist_plot()$orig_df %>% 
+	tibble::as_tibble(rownames = "rn") %>%
+	dplyr::inner_join(rnames, by = "rn") %>% 
+	dplyr::select(Comparison,
+								"Difference in Mean Proportion Black" = diff, 
+								"95% Confidence Lower Bound" = lwr, 
+								"95% Confidence Upper Bound" = upr, 
+								"p-value" = `p adj`)
+
+kable(tk,
+			digits = 4) %>% 
+	kableExtra::kable_styling(full_width = T)
 ```
 
 #### What are the racial demographics of counties with high SVIs and low vaccination rates?
