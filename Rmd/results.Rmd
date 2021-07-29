@@ -69,6 +69,13 @@ kable(tk,
 plot_vacches_race()
 ```
 
+#### What are the racial demographics of high SVI counties with low vaccination rates?
+Because of our previous observations about the relationship between a county's proportion Black residents and its levels of vaccination and vaccine hesitancy, we hypothesized that the group of high SVI counties with especially low vaccination rates that we observed in the histograms of vaccination levels for counties in differing SVI categories might consist of counties with large Black populations. We assessed this theory by constructing two sets of violin plots showing distributions of percent Black residents based on SVI category and vaccination levels. The first set of violin plots shows counties in the "Very High" "High" or "Moderate" SVI categories and compares low vaccination counties (less than 15% vaccinated) versus all other counties, while the second set shows the same comparison but for "Low" or "Very Low" SVI categories. While the low vulnerability counties show similar distributions of percent Black residents for both the low and the high vaccination rate groups, for high vulnerability counties, the distribution is strikingly skewed towards more Black residents for the low vaccination rate counties in comparison with the high vaccination rate counties.
+```{r}
+make_svi_race_violinplot(1, 0.4)
+make_svi_race_violinplot(0.39, 0)
+```
+
 ### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
 
 As far as we can tell from this chart, no. However, we haven't yet completed any regressions, so all we have is the plot. We want to regress controlling for demographics and vaccine hesitancy.

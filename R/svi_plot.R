@@ -52,6 +52,7 @@ make_svi_race_violinplot <- function(svi_upper, svi_lower){
 				 y = "Percent Black",
 				 title = "Percent Black for Low Vaccination versus High Vaccination Vulnerable Counties",
 				 fill = "Vaccination Level")+
+		scale_y_continuous(labels = scales::percent)+
 		geom_violin()
 }
 
