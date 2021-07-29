@@ -18,23 +18,26 @@ make_map <- function(df,
 	df <- county_laea %>%
 		dplyr::rename(fips = GEOID) %>%
 		dplyr::inner_join(df, by = "fips") %>%
-		dplyr::filter(grepl(pattern = region_name, x = region))
+		dplyr::filter(grepl(pattern = region_name, x = region)) %>%
+		dplyr::mutate(bins = cut(.data[[variable]],
+														 breaks = c(-Inf, scale_breaks[[variable]]$cuts, Inf),
+														 labels = scale_breaks[[variable]]$labels))
 
 	if (region_name == "Region")
 		region_name <- "US"
 
 	invisible(variable)
 
-	ggplot(df, aes(fill = !!ensym(variable))) +
+	ggplot(df, aes(fill = bins)) +
 		geom_sf(size = 0.1, color = "white") +
-		scale_fill_stepsn(breaks = scale_breaks[[variable]],
-											colours = fills) +
+		scale_fill_manual(values = fills) +
 		theme_minimal() +
 		theme(panel.grid = element_blank(),
 					axis.title = element_blank(),
 					axis.text = element_blank()) +
 		labs(title = stringr::str_wrap(glue::glue(title), 35),
-				 fill = stringr::str_wrap(variable_pretty, 1))
+				 fill = stringr::str_wrap(variable_pretty, 10)) +
+		guides(fill = guide_legend(reverse = T))
 }
 
 plot_regions <- function(df_covid = covid,

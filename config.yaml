@@ -38,10 +38,18 @@ charts:
 
 maps:
   scale_breaks:
-    fully_vax: [0.25, 0.45, 0.65]
-    cases_fully_vax: [23000, 30000, 39000]
-    deaths_fully_vax: [300, 550, 800]
-    hesitant_unsure: [0.15, 0.2, 0.25]
+    fully_vax:
+      cuts: [0.25, 0.45, 0.65]
+      labels: ["< 25%", "25-45%", "45-65%", "> 65%"]
+    cases_fully_vax:
+      cuts: [23000, 30000, 39000]
+      labels: ["< 23,000", "23,000-30,000", "30,000-39,000", "> 39,000"]
+    deaths_fully_vax:
+      cuts: [300, 550, 800]
+      labels: ["< 300", "300-500", "500-800", "> 800"]
+    hesitant_unsure:
+      cuts: [0.15, 0.2, 0.25]
+      labels: ["< 15%", "15-20%", "20-25%", "> 25%"]
   fills:
     cols: ["red4", "red1", "steelblue2", "blue2"]
     rev:
