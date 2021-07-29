@@ -35,7 +35,7 @@ make_map <- function(df,
 		theme(panel.grid = element_blank(),
 					axis.title = element_blank(),
 					axis.text = element_blank()) +
-		labs(title = stringr::str_wrap(glue::glue(title), 35),
+		labs(title = stringr::str_wrap(glue::glue(title), 50),
 				 fill = stringr::str_wrap(variable_pretty, 10)) +
 		guides(fill = guide_legend(reverse = T))
 }
