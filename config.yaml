@@ -40,7 +40,7 @@ maps:
   scale_breaks:
     fully_vax: [0.25, 0.45, 0.65]
     cases_fully_vax: [23000, 30000, 39000]
-    deaths_fully_vax: [23000, 30000, 39000]
+    deaths_fully_vax: [300, 550, 800]
     hesitant_unsure: [0.15, 0.2, 0.25]
   fills:
     cols: ["red4", "red1", "steelblue2", "blue2"]
