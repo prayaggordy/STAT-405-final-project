@@ -31,3 +31,9 @@ data:
 
 paper:
   sections: ["introduction", "data", "methods", "results", "discussion", "appendix"]
+
+maps:
+  scale_breaks:
+    fully_vax: [0.25, 0.45, 0.65]
+    counts_fully_vax: [0.23, 0.30, 0.39]
+  fills: ["red4", "red1", "steelblue2", "blue2"]
