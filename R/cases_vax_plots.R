@@ -1,4 +1,5 @@
 library(ggplot2); library(dplyr); library(tidyr)
+config <- read_yaml("config.yaml")
 
 make_map <- function(df,
 										 region_name,
@@ -19,6 +20,9 @@ make_map <- function(df,
 		dplyr::inner_join(df, by = "fips") %>%
 		dplyr::filter(grepl(pattern = region_name, x = region))
 
+	if (region_name == "Region")
+		region_name <- "US"
+
 	invisible(variable)
 
 	ggplot(df, aes(fill = !!ensym(variable))) +
@@ -36,6 +40,7 @@ make_map <- function(df,
 plot_regions <- function(df_covid = covid,
 												 df_census = census_county,
 												 df_vax = vax_today,
+												 df_vacches = vaccine_hesitancy,
 												 xwalk = xwalk_region,
 												 map_vars = config$maps$cns) {
 
@@ -45,19 +50,20 @@ plot_regions <- function(df_covid = covid,
 												dplyr::filter(date == max(date)) %>%
 												dplyr::ungroup(),
 											by = "fips") %>%
-		dplyr::inner_join(df_vax,
-											by = "fips") %>%
+		dplyr::inner_join(df_vax, by = "fips") %>%
+		dplyr::inner_join(df_vacches, by = "fips") %>%
 		dplyr::mutate(state_fips = stringr::str_sub(fips, end = 2)) %>%
 		dplyr::inner_join(xwalk, by = "state_fips") %>%
 		dplyr::mutate(dplyr::across(.cols = c(cases, deaths),
 																.fns = ~ (./total*100000)/fully_vax,
 																.names = "{.col}_fully_vax")) %>%
-		dplyr::select(fips, region, tidyselect::ends_with("fully_vax"))
+		dplyr::select(fips, region, hesitant_unsure, tidyselect::ends_with("fully_vax"))
 
 	region_list <- list(midwest = "Midwest",
 											northeast = "Northeast",
 											south = "South",
-											west = "West")
+											west = "West",
+											us = "Region")
 
 	lapply(setNames(names(map_vars), names(map_vars)),
 				 function(v) {
