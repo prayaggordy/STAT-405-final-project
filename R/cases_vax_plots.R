@@ -7,7 +7,8 @@ cases_vax <- vaccination %>% filter(date==max(date)) %>%
 	inner_join(cases, by="fips") %>% inner_join(total_pop, by="fips") %>%
 	dplyr::mutate(cases_100k=(cases*100000)/total,
 								deaths_100k=(deaths*100000)/total,
-								cases_fully_vax=(cases/total)/fully_vax)%>%
+								cases_fully_vax=(cases/total)/fully_vax,
+								deaths_fully_vax=(deaths/total)/fully_vax)%>%
 	filter(!is.na(deaths),state!="Hawaii",state!="Alaska")
 
 
@@ -80,5 +81,41 @@ plot_usmap(regions="county", include=.midwest_region,data = cases_vax,
 	scale_fill_stepsn(breaks=c(0.23,0.30,0.39),
 										colours=c("blue2","steelblue2","red2","red4"),
 										name="Cases per 100k vs. Vaccinations") +
+	theme(legend.position = "right")
+dev.off()
+
+png("south_deaths_vax_map.png")
+plot_usmap(regions="county", include=.south_region,data = cases_vax,
+					 values = "deaths_fully_vax") +
+	scale_fill_stepsn(breaks=c(0.23,0.30,0.39),
+										colours=c("blue2","steelblue2","red2","red4"),
+										name="Deaths per 100k vs. Vaccinations") +
+	theme(legend.position = "right")
+dev.off()
+
+png("northeast_deaths_vax_map.png")
+plot_usmap(regions="county", include=.northeast_region,data = cases_vax,
+					 values = "deaths_fully_vax") +
+	scale_fill_stepsn(breaks=c(0.23,0.30,0.39),
+										colours=c("blue2","steelblue2","red2","red4"),
+										name="Deaths per 100k vs. Vaccinations") +
+	theme(legend.position = "right")
+dev.off()
+
+png("west_deaths_vax_map.png")
+plot_usmap(regions="county", include=.west_region,data = cases_vax,
+					 values = "deaths_fully_vax", exclude=c("HI","AK")) +
+	scale_fill_stepsn(breaks=c(0.23,0.30,0.39),
+										colours=c("blue2","steelblue2","red2","red4"),
+										name="Deaths per 100k vs. Vaccinations") +
+	theme(legend.position = "right")
+dev.off()
+
+png("midwest_deaths_vax_map.png")
+plot_usmap(regions="county", include=.midwest_region,data = cases_vax,
+					 values = "deaths_fully_vax") +
+	scale_fill_stepsn(breaks=c(0.23,0.30,0.39),
+										colours=c("blue2","steelblue2","red2","red4"),
+										name="Deaths per 100k vs. Vaccinations") +
 	theme(legend.position = "right")
 dev.off()
