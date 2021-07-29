@@ -22,7 +22,8 @@ plot_deaths_pc_vaccine <- function(df_covid = covid,
 }
 
 plot_vax_over_time <- function(df_vax = vaccination,
-															 df_hes = vaccine_hesitancy) {
+															 df_hes = vaccine_hesitancy,
+															 chart_colors = config$charts$cols$svi) {
 	df <- vaccination %>%
 		dplyr::filter(fully_vax != 0) %>%
 		dplyr::inner_join(vaccine_hesitancy %>%
@@ -46,5 +47,6 @@ plot_vax_over_time <- function(df_vax = vaccination,
 				 color = "SVI category") +
 		scale_x_date(date_labels = "%B") +
 		scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
-		theme(plot.title.position = "plot")
+		theme(plot.title.position = "plot") +
+		scale_color_manual(values = chart_colors)
 }

@@ -32,6 +32,10 @@ data:
 paper:
   sections: ["introduction", "data", "results", "discussion", "appendix"]
 
+charts:
+  cols:
+    svi: ["#f80808", "#eb7606", "#ded904", "#71d003", "#0bc202"]
+
 maps:
   scale_breaks:
     fully_vax: [0.25, 0.45, 0.65]
