@@ -34,7 +34,7 @@ get_vuln_not_vuln <- function() {
 }
 
 plot_svi <- function(df_hes = vaccine_hesitancy,
-										 df_vax = vaccination) {
+										 df_vax = vax_today) {
 
 	make_df_for_sviplot(df_hes = df_hes, df_vax = df_vax) %>%
 		ggplot(aes(x = fully_vax, fill = svi_category)) +
@@ -45,7 +45,8 @@ plot_svi <- function(df_hes = vaccine_hesitancy,
 		labs(x = "Percent of population fully vaccinated",
 				 y = "Number of counties",
 				 title = "Distribution of vaccination among counties in each SVI category",
-				 fill = "SVI category")
+				 fill = "SVI category") +
+		scale_fill_manual(values = c("#f80808", "#eb7606", "#ded904", "#71d003", "#0bc202"))
 }
 
 
