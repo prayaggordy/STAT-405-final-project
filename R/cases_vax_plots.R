@@ -1,4 +1,4 @@
-library(usmap); library(ggplot2); library(dplyr); library(tidyr)
+library(ggplot2); library(dplyr); library(tidyr)
 
 make_map <- function(df,
 										 region_name,
