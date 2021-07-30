@@ -13,8 +13,7 @@ make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
 					 											 "High Vulnerability",
 					 											 "Moderate Vulnerability",
 					 											 "Low Vulnerability",
-					 											 "Very Low Vulnerability")) -> svi_df
-	svi_df
+					 											 "Very Low Vulnerability"))
 }
 
 
