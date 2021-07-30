@@ -29,6 +29,10 @@ data:
   region_xwalk: "region_xwalk.csv"
   tx_fips: "txfips.csv"
 
+urls:
+  nyt_covid: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
+
+
 paper:
   sections: ["introduction", "data", "results", "discussion", "appendix"]
 
