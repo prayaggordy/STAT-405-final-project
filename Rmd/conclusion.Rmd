@@ -1,19 +1,21 @@
-## Discussion
+## Conclusion
 
 ### Summary of findings
 
-1. Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest and West, while the South is lagging significantly behind the rest of the country in vaccination levels.
-2. Counties in the South were more likely to have higher ratios of cases and deaths per 100,000 people to vaccination rates than were counties in the Northeast, Midwest, or West, suggesting that severity and vaccination levels might not be positively correlated or correlated at all.
-3. Generally, much of the South exhibited high levels of vaccine hesitancy and much of the Northeast exhibited very low levels of vaccine hesitancy, inversely mirroring the trends in vaccination levels as expected. However, Texas had surprisingly low levels of vaccine hesitancy, as did Nebraska, Utah, and the Dakotas.
-4. Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
-5. The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
-6. The percentage of a county's votes in the 2020 presidential election cast for Trump was negatively correlated with the county's vaccination levels.
-7. Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
-8. For Democratic counties in which Black residents make up more than 5% of the population, vaccine hesitancy was positively correlated with race.
-9. Very High, High, or Moderate Vulnerability counties (by SVI) with very low vaccination rates (<15%) were much more likely to have higher percentage Black populations than their higher vaccination counterparts with the same SVI values, while the difference between very low vaccination rate counties and their more vaccinated counterparts among Low and Very Low Vulnerability counties was far less pronounced.
-10. Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates.
+1. Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates.
+2. Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest and West, while the South is lagging significantly behind the rest of the country in vaccination levels.
+3. Counties in the South were more likely to have higher ratios of cases and deaths per 100,000 people to vaccination rates than were counties in the Northeast, Midwest, or West, suggesting that severity and vaccination levels might not be positively correlated or correlated at all.
+4. Generally, much of the South exhibited high levels of vaccine hesitancy and much of the Northeast exhibited very low levels of vaccine hesitancy, inversely mirroring the trends in vaccination levels as expected. However, Texas had surprisingly low levels of vaccine hesitancy, as did Nebraska, Utah, and the Dakotas.
+5. Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
+6. The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
+7. The percentage of a county's votes in the 2020 presidential election cast for Trump was negatively correlated with the county's vaccination levels.
+8. Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
+9. For Democratic counties in which Black residents make up more than 5% of the population, vaccine hesitancy was positively correlated with race.
+10. Very High, High, or Moderate Vulnerability counties (by SVI) with very low vaccination rates (<15%) were much more likely to have higher percentage Black populations than their higher vaccination counterparts with the same SVI values, while the difference between very low vaccination rate counties and their more vaccinated counterparts among Low and Very Low Vulnerability counties was far less pronounced.
 
 ### Analysis and Recommendations
+
+The concerning implication of our finding that vaccination levels are uncorrelated with cumulative county Covid death rates is that even in extreme cases, the severity of the pandemic did not influence residents' desire to receive the Covid-19 vaccine. This was a strong motivator to examine other factors that might be contributing to low vaccination levels and vaccine hesitancy.
 
 #### Region
 
@@ -36,5 +38,3 @@ Throughout our report, the proportion of a county's population that identified a
 Unfortunately, these results are unsurprising and echo other reports. In a survey by the CDC in December 2020, for instance, 46% of Black adults in the US stated that they probably would not choose to receive the COVID-19 vaccine, compared with 30% of white adults. Many have argued that vaccine hesitancy manifests a deeper distrust of modern medicine within Black American communities motivated by the historically exploitative relationship between medical science and Black patients. Notorious examples include the Tuskegee Syphilis Study, in which investigators withheld treatment from Black study subjects for decades; the harvesting of Henrietta Lacks' cancer cells to create a cell line for medical research without her (or or family's) consent or knowledge; and forced sterilization of Black women mandated by the North Carolina Eugenics Board.
 
 Stronger outreach to vulnerable and historically mistreated communities is a key tool in vaccinating the American public.
-
-#### Death rates
