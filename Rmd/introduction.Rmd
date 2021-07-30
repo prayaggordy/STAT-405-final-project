@@ -7,14 +7,18 @@ output:
 
 ### Background and Motivation
 
-In the 18 months since COVID-19 first reached the shores of the United States, 35 million Americans have contracted the disease and over 600,000 Americans have died due to COVID-19. However, despite the pandemic's massive economic, social, and human capital toll, a large portion of the population has not taken advantage of the availability of free vaccinations and large disparities in vaccination rates are prevalent. For example, Chattahoochee County, Georgia has reported that 99.9% of their population is vaccinated against COVID-19, according to the CDC, while other counties continue to report single-digit vaccination percentages. This is especially alarming given that fully-vaccinated people accounted for less than 1% of all US COVID-19 deaths in May and close to the same percent of all hospitalizations, meaning that almost all current and future US COVID-19 deaths are entirely preventable. Given the puzzling imbalance between the clear benefits of vaccination and the low rates of vaccination, we believe it to be in the interest of public health to examine and understand potential reasons and causes of said imbalance. Our investigation seeks to address this broad question by exploring the relationships between county-level vaccination rates and COVID-19 case and death rates in relation to variables like politics, race, and vaccine hesitancy. 
+In the 18 months since COVID-19 first reached the shores of the United States, 35 million Americans have tested positive for the disease and over 600,000 Americans have died due to COVID-19. However, despite the pandemic's massive economic, social, and human capital toll, a large portion of the population has not taken advantage of the availability of free vaccinations, and large disparities in vaccination rates are prevalent. 
+
+This is especially alarming given that fully-vaccinated people accounted for less than 1% of all US COVID-19 deaths in May and close to the same percent of all hospitalizations, meaning that almost all current and future US COVID-19 deaths are entirely preventable. With new studies suggesting that the delta variant is as transmissible as chicken pox and deadlier than the original virus, speeding up the vaccination campaign is more crucial than ever.
+
+Given the puzzling imbalance between the clear benefits of vaccination and the low rates of vaccination, we believe it to be in the interest of public health to examine and understand potential reasons and causes of said imbalance. Our investigation seeks to address this broad question by exploring the relationships between county-level vaccination rates and COVID-19 case and death rates in relation to variables including politics, race, and vaccine hesitancy.
 
 ### Research Questions
 
 In our exploration of the vaccination, cases, and demographic data, we sought to answer a number of questions that might elucidate possible relationships in the data. These questions include:
 
 1. How do vaccination levels and hesitancy differ by geographic region in the US?
-2. How is a county's Social Vulnerability Index related to its rate of vaccination?
+2. How is a county's Social Vulnerability Index (SVI) related to its rate of vaccination?
 3. How are the prevailing political views of a county related to its rate of vaccination?
 4. How does the percentage of Black residents in a county relate to its level of vaccination?
 5. What are the racial demographics of counties that do not conform to the expected relationship between politics and vaccination?

@@ -16,7 +16,7 @@ This dataset gives the number of votes cast for the major Democratic and Republi
 
 ### Main Vaccination Dataset
 
-We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county Social Vulnerability Index (SVI) information (see appendix for details).
+We collected county-level vaccination data from the CDC's COVID-19 Data Tracker. Texas does not report county-level vaccination information to the CDC COVID-19 Data Tracker, and California does not report information for counties with fewer than 20,000 residents. All other US counties are included in this dataset. The dataset also contains county SVI information (see appendix for details).
 
 ### Texas Vaccination
 
@@ -27,5 +27,4 @@ To complete our county-level vaccination data, we collected vaccination data fro
 To complete our county-level vaccination data, we downloaded the total number of people vaccinated and the total number of people who have received at least one dose from all counties in California with fewer than 20,000 residents from [democratandchronicle.com](democratandchronicle.com).
 
 ### Vaccine Hesitancy
-
-We obtained county-level estimates of the percentage of the population who are hesitant to receive the COVID-19 vaccine from the CDC (see appendix for details). This dataset also includes racial demographics and SVI information (see appendix for details), as well as geographical information because it was designed to produce a map.
+We obtained county-level estimates of the percentage of the population who is hesitant to receive the COVID-19 vaccine from the CDC (see appendix for details). The dataset also includes racial demographics and SVI information (see appendix for details), as well as geographical information because it was designed to produce a map.
