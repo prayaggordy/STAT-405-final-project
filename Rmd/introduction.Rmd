@@ -18,7 +18,7 @@ Given the puzzling imbalance between the clear benefits of vaccination and the l
 In our exploration of the vaccination, cases, and demographic data, we sought to answer a number of questions that might elucidate possible relationships in the data. These questions include:
 
 1. How do vaccination levels and hesitancy differ by geographic region in the US?
-2. How is a county's Social Vulnerability Index related to its rate of vaccination?
+2. How is a county's Social Vulnerability Index (SVI) related to its rate of vaccination?
 3. How are the prevailing political views of a county related to its rate of vaccination?
 4. How does the percentage of Black residents in a county relate to its level of vaccination?
 5. What are the racial demographics of counties that do not conform to the expected relationship between politics and vaccination?
