@@ -8,6 +8,8 @@ output:
     toc_depth: 3
 bibliography: references.bib
 nocite: '@*'
+fontsize: 10pt
+geometry: margin=1in
 ---
 
 ```{r setup, include=FALSE}
