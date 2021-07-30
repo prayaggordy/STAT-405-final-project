@@ -1,14 +1,17 @@
 ## Discussion
 ### Summary of findings
 
-1). Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates
-2). Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
-3). The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
-4). The percentage of a county's votes in the 2020 presidential election cast for Donald Trump was negatively correlated with the county's vaccination levels.
-5). Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
-6). Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest, while the South and West are lagging behind the rest of the country in vaccination levels.
-7). MAPS SUMMARY
-8). MULTIVARIATE REGRESSION SUMMARY
+1. Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest, while the South and West are lagging behind the rest of the country in vaccination levels.
+7. Counties in the South were more likely to have higher ratios of deaths per 100,000 people to vaccination rates than were counties in the Northeast, Midwest, or West.
+8. While much of the South exhibited high levels of vaccine hesitancy and much of the Northeast exhibited very low levels of vaccine hesitancy, inversely mirroring the trends in vaccination levels as expected, Texas had surprisingly low levels of vaccine hesitancy, and some other states also exhibited unexpected trends.
+2. Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
+3. The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
+4. The percentage of a county's votes in the 2020 presidential election cast for Donald Trump was negatively correlated with the county's vaccination levels.
+5. Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
+6. For Democratic counties in which Black residents make up more than 5% of the population, vaccine hesitancy was positively correlated with race.
+3. Very High, High, or Moderate Vulnerability counties (by SVI) with very low vaccination rates (<15%) were much more likely to have higher percentage Black populations than their higher vaccination counterparts with the same SVI values, while the difference between very low vaccination rate counties and their more vaccinated counterparts among Low and Very Low Vulnerability counties was far less pronounced.
+1. Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates.
+8. MULTIVARIATE REGRESSION SUMMARY
 
 
 ### Analysis and Recommendations
