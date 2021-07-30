@@ -1,5 +1,114 @@
 ## Appendix
 
+### Variables in data
+
+#### `census_county` and `census_region`
+
+1. `med_income` (B19013_001 in `tidycensus`): the median income of the chosen geography's population (each county in census_county, each region in census_region).
+2. `male` (B01001_002): the total number of males in the selected geography's population.
+3. `female` (B01001_026): the total number of females in the selected geography's population.
+4. `med_age` (B01002_001): the median age of the chosen geography's population.
+5. `white` (B01001A_001): the total number of white residents in the selected geography's population.
+6. `black` (B01001B_001): the total number of black residents in the selected geography's population.
+7. `asian` (B01001D_001): the total number of asian residents in the selected geography's population.
+8. `hispanic` (B01001I_001): the total number of hispanic residents in the selected geography's population.
+9. `total` (B01001_001): the total population of the selected geography.
+10. `other` (B01001F_001): the total number of residents of "other" races in the selected geography.
+
+#### Daily Covid counts
+
+1. `date` - the date of the reporting
+2. `county` - the county name
+3. `state` - the state name
+4. `fips` - the FIPS code for that county
+5. `cases` - the number of cumulative cases in that county as of that date
+6. `deaths` - the number of cumulative deaths in that county as of that date
+
+#### Presidential Election Results by County
+
+1. `year` - the year of the election results, numerical
+2. `state` - the state in which the county is located, character
+3. `state_po` - the two-letter abbreviation for the state in which the county is located, character
+4. `county_name` - the name of the county, character
+5. `county_fips` - the county FIPS code, numerical
+6. `office` - the office the election results are for - President for all rows, character
+7. `candidate` - the presidential candidate that the candidate votes in the row refer to, character
+8. `party` - the political party of the candidate, character
+9. `candidatevotes` - the number of votes cast for the candidate, numerical
+10. `totalvotes` - the total number of votes cast in the county for the election, numerical
+
+#### Main Vaccination Dataset
+
+1. `Date` - the date for which the data in the row is reported in the format mm/dd/yyyy, character
+2. `FIPS` - the county FIPS code, character
+3. `MMWR_week` - the Morbidity and Mortality Weekly Report week, numerical
+4. `Recip_County` - the county name, character
+5. `Recip_State` - the two-letter state abbreviation for the state in which the county is located
+6. `Series_Complete_Pop_Percent` - the percentage of the population that is fully vaccinated, numerical
+7. `Series_Compete_Yes` - the total number of people in the county who are fully vaccinated, numerical
+8. `Series_Complete_12Plus` - the total number of people in the county over 12 years old who are fully vaccinated
+9. `Series_Complete_12Plus_Pop_Percent` - the percentage of the population over 12 years old that is fully vaccinated, numerical
+10. `Series_Complete_18Plus` - the total number of people in the county over 18 years old who are fully vaccinated, numerical
+11. `Series_Complete_18Plus_Pop_Percent` - the percentage of the population over 18 years old that is fully vaccinated, numerical
+10. `Series_Complete_65Plus` - the total number of people in the county over 18 years old who are fully vaccinated, numerical
+11. `Series_Complete_65Plus_Pop_Percent` - the percentage of the population over 18 years old that is fully vaccinated, numerical
+12. `Completeness_pct` - an estimate of how complete the vaccination data is for the county, numerical
+13. `Administered_Dose1_Recip` - number of first vaccine doses administered, numerical
+14. `Administered_Dose1_Pop_Pct` - percentage of the population that has received dose 1, numerical
+15. `Administered_Dose1_Recip_12Plus` - number of first vaccine doses administered to people over 12 years old, numerical
+14. `Administered_Dose1_12PlusPop_Pct` - percentage of the population over 12 years old that has received dose 1, numerical
+15. `Administered_Dose1_Recip_18Plus` - number of first vaccine doses administered to people over 18 years old, numerical
+14. `Administered_Dose1_18PlusPop_Pct` - percentage of the population over 18 years old that has received dose 1, numerical
+15. `Administered_Dose1_Recip_65Plus` - number of first vaccine doses administered to people over 65 years old, numerical
+14. `Administered_Dose1_65PlusPop_Pct` - percentage of the population over 65 years old that has received dose 1, numerical
+15. `SVI_CTGY` - Social Vulnerability Index category (Low, Low-Mod, Mod, Mod-High, High), character
+16. `Series_Complete_Pop_Pct_SVI` - categorizes vaccination levels and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+17. `Series_Complete_Pop_Pct12Plus_SVI` - categorizes vaccination levels in the population over 12 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+18. `Series_Complete_Pop_Pct18Plus_SVI` - categorizes vaccination levels in the population over 18 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+19. `Series_Complete_Pop_Pct65Plus_SVI` - categorizes vaccination levels in the population over 18 years old and SVI (Low, Low-Mod, Mod, Mod-High, High), character
+
+#### Texas Vaccination
+
+1. `County_Name` - character
+2. `PHR_critical_Pop` - Public Health Region in which the county is located, character
+3. `Estimated_Coverage_(12+_1Dose)` - estimated percentage of the population over 12 that has received one dose (taking into account probable completeness of reporting), numerical
+4. `Estimated_Coverage_(12+_Fully)` - estimated percentage of the population over 12 that has been fully vaccinated (taking into accouCOVIDnt probable completeness of reporting), numerical
+3. `Estimated_Coverage_(65+_1Dose)` - estimated percentage of the population over 65 that has received one dose (taking into account probable completeness of reporting), numerical
+4. `Estimated_Coverage_(65+_Fully)` - estimated percentage of the population over 65 that has been fully vaccinated (taking into account probable completeness of reporting), numerical
+5. `People_Fully_Vaccinated` - actual reported number of people who have been fully vaccinated, numerical
+6. `People_with_at_least_One_Dose` - actual reported number of people with at least one vaccine dose, numerical
+7. `Percentage_Vaccinated` - percentage of total population that has been reported as fully vaccinated, numerical
+8. `Population_16Up` - total population of people at least 16 years old, numerical
+
+#### Small California Counties Vaccination
+
+1. `County` - the name of the county, character
+2. `FIPS` - county FIPS code, numerical
+3. `One_Dose` - number of people who have received at least one vaccine dose, numerical
+4. `Two_Doses` - number of people who are fully vaccinated, numerical
+
+#### Vaccine Hesitancy
+
+1. `FIPS Code` - county FIPS code, numerical
+2. `County Name` - character
+3. `State` - state in which the county is located, character
+4. `Estimated Hesitant` - estimated percentage of the population with any degree of vaccine hesitancy, numerical
+5. `Estimated Hesitant or unsure` - estimated percentage of the population that is either hesitant to receive the vaccine or unsure about how they feel about the vaccine, numerical
+6. `Estimated Strongly Hesitant` - estimated percentage of the population that is strongly hesitant to receive the vaccine, numerical
+7. `Social Vulnerability Index (SVI)` - CDC/ATSDR Social Vulnerability Index, numerical
+8. `SVI Category` - Social Vulnerability Index category (Low, Low-Mod, Mod, Mod-High, High), character
+9. `level of concern for vaccination rollout` - CDC's estimated level of concern for getting the population of the county vaccinated on a scale of 0 to 1, numerical
+10. `CVAC Level of Concern` - categorical variable describing CDC's level of concern (Very High Concern, High Concern, Moderate Concern, Low Concern, Very Low Concern), character
+11. `Percent adults fully vaccinated against COVID-19 (as of 6/10/21)` - character
+12. `Percent Hispanic` - numerical
+13. `Percent non-Hispanic American Indian/Alaskan` - numerical
+14. `Percent non-Hispanic Asian` - numerical
+15. `Percent non-Hispanic Black` - numerical
+16. `Percent non-Hispanic Native Hawaiian/Pacific Islander` - numerical
+17. `Percent non-Hispanic White` - numerical
+18. `Geographical Point` - ordered pair (longitude, latitude) marking the starting point for the county boundary - character
+19. `County Boundary` - a series of ordered pairs (longitude, latitude) marking the boundary of the county - character
+
 ### How does CDC estimate vaccine hesitancy?
 
 The CDC calculates and compiles these estimates based on the U.S. Census Bureau's Household Pulse Survey data. Note that they provide the following note about the most updated version of the vaccine hesitancy data, which was used in our report: "Due to the change in the survey instrument regarding intention to vaccinate, our estimates for “hesitant or unsure” or “hesitant” are not directly comparable with prior Household Pulse Survey data and should not be used to examine trends in hesitancy prior to April 14, 2021." Estimates are based on the answers to the following question:
