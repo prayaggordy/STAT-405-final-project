@@ -33,6 +33,13 @@ urls:
   nyt_covid: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
   region_xwalk: "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv"
 
+census:
+  vars: {med_income: "B19013_001", male: "B01001_002",
+         female: "B01001_026", med_age: "B01002_001",
+         white: "B01001A_001", black: "B01001B_001",
+         hispanic: "B01001I_001", asian: "B01001D_001",
+         total: "B01001_001", other: "B01001F_001"}
+
 paper:
   sections: ["introduction", "data", "results", "discussion", "appendix"]
 
