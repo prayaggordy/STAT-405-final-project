@@ -37,7 +37,7 @@ census:
          total: "B01001_001", other: "B01001F_001"}
 
 paper:
-  sections: ["introduction", "data", "results", "discussion", "appendix"]
+  sections: ["introduction", "data", "results", "conclusion", "appendix"]
 
 charts:
   cols:
