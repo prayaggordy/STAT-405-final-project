@@ -10,8 +10,10 @@ plot_vacches_race <- function(df_vacches = vaccine_hesitancy,
 		geom_smooth(method = "lm", se = F, color = "cadetblue3", size = 2) +
 		labs(x = "Percent Black",
 				 y = "Percent Hesitant or Unsure About COVID-19 Vaccine",
-				 title = "Vaccine Hesitancy Versus Race for Democratic Counties with Significant Black Populations") +
+				 title = stringr::str_wrap("Vaccine Hesitancy Versus Race for Democratic Counties with Significant Black Populations", 55)) +
 		theme_minimal() +
 		scale_x_continuous(labels = scales::percent) +
-		scale_y_continuous(labels = scales::percent)
+		scale_y_continuous(labels = scales::percent) +
+		theme(plot.title.position = "plot",
+					plot.title = element_text(size = 14))
 }

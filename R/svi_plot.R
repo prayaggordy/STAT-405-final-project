@@ -27,14 +27,14 @@ make_svi_race_violinplot <- function(df_hes = vaccine_hesitancy,
 									vax_bin = ifelse(fully_vax < vax_cutoff,
 																	 "Low vaccination",
 																	 "Moderate to high vaccination")) %>%
-		ggplot(aes(x = vax_bin,
+		ggplot(aes(x = stringr::str_wrap(vax_bin, 10),
 							 y = percent_black,
 							 fill = stringr::str_wrap(vax_bin, 10))) +
 		geom_violin(size = 0.1) +
 		facet_wrap(~ vulnerability) +
 		theme_minimal() +
 		labs(y = "Percent Black",
-				 title = "Black residents make up a disproportionate share of low-vaccination, vulnerable counties",
+				 title = stringr::str_wrap("Black residents make up a disproportionate share of low-vaccination, vulnerable counties", 55),
 				 fill = "Vaccination level") +
 		theme(axis.title.x = element_blank(),
 					plot.title = element_text(size = 14),
