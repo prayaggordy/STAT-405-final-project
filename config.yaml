@@ -31,7 +31,7 @@ data:
 
 urls:
   nyt_covid: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
-
+  region_xwalk: "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv"
 
 paper:
   sections: ["introduction", "data", "results", "discussion", "appendix"]

@@ -8,7 +8,7 @@ dm_xwalk_fips <- function() {
 		dplyr::select(fips, state_name, county, county_short_lc)
 }
 
-dm_xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv",
+dm_xwalk_regions <- function(u = config$urls$region_xwalk,
 														 fn = config$data$region_xwalk,
 														 path_raw = config$paths$raw,
 														 path_proc = config$paths$proc,
