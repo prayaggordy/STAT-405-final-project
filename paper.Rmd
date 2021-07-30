@@ -6,6 +6,9 @@ output:
   pdf_document:
     toc: true
     toc_depth: 5
+bibliography: references.bib
+nocite: |
+  @noauthor_covid_19_nodate, @cdc_covid_2020, @noauthor_texas_nodate, @noauthor_california_nodate, @noauthor_cho_alb_vaccinations_nodate, @noauthor_nearly_2021, @noauthor_republican_2021, @ellis_mcconnell_2021, @subbaraman_this_2021, @noauthor_for_2014, @butanis_legacy_nodate
 ---
 
 ```{r setup, include=FALSE}
@@ -24,3 +27,4 @@ source("main.R")
 ```
 
 
+## References
