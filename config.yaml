@@ -32,6 +32,9 @@ data:
 urls:
   nyt_covid: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
   region_xwalk: "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv"
+  cdc_vacc: "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD"
+  tex_vacc: "https://www.dshs.texas.gov/immunize/covid19/COVID-19-Vaccine-Data-by-County.xls"
+  va_vacc: "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD"
 
 census:
   vars: {med_income: "B19013_001", male: "B01001_002",

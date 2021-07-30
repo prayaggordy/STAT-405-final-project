@@ -1,16 +1,4 @@
-
-#https://data.cdc.gov/Vaccinations/COVID-19-Vaccinations-in-the-United-States-County/8xkx-amqh/data
-
-# California by county - https://data.democratandchronicle.com/covid-19-vaccine-tracker/california/06/
-
-# Texas by county - https://tabexternal.dshs.texas.gov/t/THD/views/COVID-19VaccineinTexasDashboard/Summary?:origin=card_share_link&:embed=y&:isGuestRedirectFromVizportal=y
-
-
-library(magrittr)
-
-config <- yaml::read_yaml("config.yaml")
-
-download_vacc <- function(u = "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD",
+download_vacc <- function(u = config$urls$cdc_vacc,
 													fn = config$data$cdc_vacc,
 													path_raw = config$paths$raw,
 													path_proc = config$paths$proc,
@@ -60,7 +48,7 @@ download_tx_vacc <- function(u, fn, path_raw, path_proc, sheet, update) {
 	df
 }
 
-dm_texas_vacc <- function(u = "https://www.dshs.texas.gov/immunize/covid19/COVID-19-Vaccine-Data-by-County.xls",
+dm_texas_vacc <- function(u = config$urls$tex_vacc,
 													fn = config$data$tex_vacc,
 													path_raw = config$paths$raw,
 													path_proc = config$paths$proc,
@@ -108,7 +96,7 @@ dm_ca_vacc <- function(fn = config$data$small_ca_vacc,
 	df
 }
 
-dm_va_vacc <- function(u = "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD",
+dm_va_vacc <- function(u = config$urls$va_vacc,
 											 fn = config$data$va_vacc,
 											 path_proc = config$paths$proc,
 											 update = F,
