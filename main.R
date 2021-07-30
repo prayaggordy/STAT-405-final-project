@@ -1,5 +1,5 @@
-library(magrittr); library(RSQLite); library(yaml); library(readr)
-config <- read_yaml("config.yaml")
+config <- yaml::read_yaml("config.yaml")
+easypackages::libraries(config$libraries)
 sapply(list.files(path = "R", full.names = T), source, .GlobalEnv)
 
 xwalk_region <- dm_xwalk_regions()

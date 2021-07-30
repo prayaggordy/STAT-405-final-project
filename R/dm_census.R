@@ -1,6 +1,3 @@
-library(tidycensus); library(tidyverse); library(magrittr); library(dplyr)
-library(tidyr); library(readr); library(tibble)
-
 dm_xwalk_fips <- function() {
 	tigris::fips_codes %>%
 		dplyr::mutate(county_short_lc = gsub(" County", "", county) %>% tolower(),
@@ -8,7 +5,7 @@ dm_xwalk_fips <- function() {
 		dplyr::select(fips, state_name, county, county_short_lc)
 }
 
-dm_xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv",
+dm_xwalk_regions <- function(u = config$urls$region_xwalk,
 														 fn = config$data$region_xwalk,
 														 path_raw = config$paths$raw,
 														 path_proc = config$paths$proc,
@@ -33,6 +30,7 @@ dm_xwalk_regions <- function(u = "https://raw.githubusercontent.com/cphalpert/ce
 }
 
 download_census <- function(geography,
+														variables = config$census$vars,
 														fn = config$data$census,
 														path_raw = config$paths$raw,
 														path_proc = config$paths$proc,
@@ -46,11 +44,7 @@ download_census <- function(geography,
 
 	if (!file.exists(fn_raw) | update) {
 		df <- get_acs(geography = geography,
-									variables = c(med_income = "B19013_001", male = "B01001_002",
-																female = "B01001_026", med_age = "B01002_001",
-																white = "B01001A_001", black = "B01001B_001",
-																hispanic = "B01001I_001", asian = "B01001D_001",
-																total = "B01001_001", other = "B01001F_001"),
+									variables = unlist(variables),
 									year = 2019,
 									moe_level = 95)
 		write_csv(df, fn_raw)

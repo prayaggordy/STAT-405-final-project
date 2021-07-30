@@ -1,7 +1,3 @@
-library(magrittr)
-
-config <- yaml::read_yaml("config.yaml")
-
 download_data <- function(u,
 													fn_full,
 													update = F) {

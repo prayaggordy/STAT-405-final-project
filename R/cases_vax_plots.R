@@ -1,6 +1,3 @@
-library(ggplot2); library(dplyr); library(tidyr)
-config <- read_yaml("config.yaml")
-
 make_map <- function(df,
 										 region_name,
 										 variable,

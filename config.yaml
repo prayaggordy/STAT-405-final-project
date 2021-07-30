@@ -1,10 +1,10 @@
+libraries: ["magrittr", "RSQLite", "tidyverse", "tidycensus", "tigris", "knitr",
+            "kableExtra", "broom", "MASS", "grid", "gridExtra"]
+
 paths:
   raw: "data/raw/"
   proc: "data/processed/"
   plots: "plots/"
-  us_hr: "data/raw/us_data/hourly/"
-  us_ts: "data/raw/us_data/time_series/"
-  global_data: "data/raw/global_data/"
   rmd: "Rmd/"
 
 data:
@@ -16,18 +16,25 @@ data:
   tex_vacc: "people_vaccinated_tx.csv"
   va_vacc: "va_vacc.csv"
   small_ca_vacc: "manual_CA_smallcounty_vacc.csv"
-  global_doses: "time_series_covid19_vaccine_doses_admin_global.csv"
-  global_vax: "time_series_covid19_vaccine_global.csv"
-  global_vax_data: "vaccine_data_global.csv"
-  vax_data: "vaccine_data_us.csv"
   vax_data_all: "vaccine_data_us_full.csv"
-  ppl_vax: "vaccine_people_vaccinated_US.csv"
-  ppl_vax_ts: "people_vaccinated_us_timeline.csv"
-  doses: "time_series_covid19_vaccine_doses_admin_US.csv"
-  vax_data_ts: "vaccine_data_us_timeline.csv"
   census: "{geography}_census.csv"
   region_xwalk: "region_xwalk.csv"
   tx_fips: "txfips.csv"
+
+urls:
+  nyt_covid: "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
+  region_xwalk: "https://raw.githubusercontent.com/cphalpert/census-regions/master/us%20census%20bureau%20regions%20and%20divisions.csv"
+  cdc_vacc: "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD"
+  tex_vacc: "https://www.dshs.texas.gov/immunize/covid19/COVID-19-Vaccine-Data-by-County.xls"
+  va_vacc: "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD"
+  vacc_hes: "https://data.cdc.gov/api/views/q9mh-h2tw/rows.csv?accessType=DOWNLOAD"
+
+census:
+  vars: {med_income: "B19013_001", male: "B01001_002",
+         female: "B01001_026", med_age: "B01002_001",
+         white: "B01001A_001", black: "B01001B_001",
+         hispanic: "B01001I_001", asian: "B01001D_001",
+         total: "B01001_001", other: "B01001F_001"}
 
 paper:
   sections: ["introduction", "data", "results", "discussion", "appendix"]

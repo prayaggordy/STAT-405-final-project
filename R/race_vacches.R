@@ -1,6 +1,3 @@
-library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra)
-config <- read_yaml("config.yaml")
-
 plot_vacches_race <- function(df_vacches = vaccine_hesitancy,
 															df_census = census_county,
 															df_pres = pres) {
