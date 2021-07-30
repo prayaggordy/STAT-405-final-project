@@ -16,42 +16,33 @@ make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
 					 											 "Very Low Vulnerability"))
 }
 
-
-get_df_svi_race <- function(df_svi = make_df_for_sviplot(), svi_upper, svi_lower){
-	db <- paste0(config$paths$proc, config$data$db)
-	dcon <- dbConnect(SQLite(), dbname = db)
-	query <- "
-	SELECT fips, percent_black
-	FROM census_county;"
-	res<- dbSendQuery(conn=dcon, query)
-	cens <- dbFetch(res, -1)
-	dbClearResult(res)
-	df_svi %>%
-		dplyr::filter((svi >= svi_lower) & (svi<=svi_upper)) %>%
-		inner_join(cens, by = "fips") -> svi_df
-	svi_df
-}
-
-make_svi_race_violinplot <- function(svi_upper, svi_lower, title){
-	df = get_df_svi_race(svi_upper = svi_upper, svi_lower=svi_lower)
-	vaccine_tag <- function(num){
-		if (num < 0.15){
-			returnval <- "Low vaccination"
-		}
-		else{
-			returnval <- "Moderate to high vaccination"
-		}
-		returnval
-	}
-	new_df <- mutate(df, vacc_tag =sapply(fully_vax, vaccine_tag))
-	ggplot(new_df, aes(x=vacc_tag, y=percent_black, fill = vacc_tag)) +
-		theme_minimal()+
-		labs(x = "Vaccination Level",
-				 y = "Percent Black",
-				 title = title,
-				 fill = "Vaccination Level")+
-		scale_y_continuous(labels = scales::percent)+
-		geom_violin()
+make_svi_race_violinplot <- function(df_hes = vaccine_hesitancy,
+																		 df_vax = vax_today,
+																		 df_census = census_county,
+																		 vax_cutoff = 0.15) {
+	make_df_for_sviplot(df_hes = df_hes,
+											df_vax = df_vax) %>%
+		dplyr::inner_join(df_census, by = "fips") %>%
+		dplyr::mutate(vulnerability = ifelse(svi_category %in%
+																				 	c("Low Vulnerability",
+																				 		"Very Low Vulnerability"),
+																				 "Non-Vulnerable",
+																				 "Vulnerable"),
+									vax_bin = ifelse(fully_vax < vax_cutoff,
+																	 "Low vaccination",
+																	 "Moderate to high vaccination")) %>%
+		ggplot(aes(x = vax_bin,
+							 y = percent_black,
+							 fill = stringr::str_wrap(vax_bin, 10))) +
+		geom_violin() +
+		facet_wrap(~ vulnerability) +
+		theme_minimal() +
+		labs(y = "Percent Black",
+				 title = "Black residents make up a disproportionate share of low-vaccination, vulnerable counties",
+				 fill = "Vaccination level") +
+		theme(axis.title.x = element_blank(),
+					plot.title = element_text(size = 14),
+					plot.title.position = "plot")
 }
 
 get_vuln_not_vuln <- function() {
