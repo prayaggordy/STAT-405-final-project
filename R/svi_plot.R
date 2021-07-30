@@ -34,7 +34,7 @@ make_svi_race_violinplot <- function(df_hes = vaccine_hesitancy,
 		ggplot(aes(x = vax_bin,
 							 y = percent_black,
 							 fill = stringr::str_wrap(vax_bin, 10))) +
-		geom_violin() +
+		geom_violin(size = 0.1) +
 		facet_wrap(~ vulnerability) +
 		theme_minimal() +
 		labs(y = "Percent Black",
@@ -42,7 +42,9 @@ make_svi_race_violinplot <- function(df_hes = vaccine_hesitancy,
 				 fill = "Vaccination level") +
 		theme(axis.title.x = element_blank(),
 					plot.title = element_text(size = 14),
-					plot.title.position = "plot")
+					plot.title.position = "plot") +
+		scale_fill_manual(values = c("#f80808", "#0bc202")) +
+		scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 }
 
 get_vuln_not_vuln <- function() {
