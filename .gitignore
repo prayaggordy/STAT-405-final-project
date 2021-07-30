@@ -5,7 +5,6 @@
 *.csv
 *.db
 *.zip
-*.pdf
 *.png
 
 !data/raw/countypres_2000-2020.csv
