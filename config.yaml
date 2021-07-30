@@ -1,5 +1,5 @@
 libraries: ["magrittr", "RSQLite", "tidyverse", "tidycensus", "tigris", "knitr",
-            "kableExtra", "broom", "MASS", "grid", "gridExtra"]
+            "kableExtra", "broom", "MASS", "grid", "readr", "gridExtra"]
 
 paths:
   raw: "data/raw/"

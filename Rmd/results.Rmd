@@ -1,5 +1,19 @@
 ## Results
 
+### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
+
+```{r fig.align='center'}
+region_plots$deaths_fully_vax$us
+```
+
+This map is colored based on the ratio of deaths per 100,000 to vaccination rate rather than the cases per 100,000 to vaccination rate. While this is a rudimentary form of analysis, there do seem to some differences in the two ratios, especially in the mountainous states of the West, such as Idaho, Wyoming, and Utah. Specifically, those states had a much lower ratio of deaths to vaccinations relative to their cases to vaccinations ratio, which might suggest that in those areas there might be some correlation, although there is nothing definitive. To further analyze this possibility, we plotted deaths per county versus vaccination rate:
+
+```{r}
+plot_deaths_pc_vaccine()
+```
+
+This chart suggests that there is no correlation between the severity of the pandemic and residents' vaccination levels. Even some counties where close to 1-in-100 residents died from Covid are extremely under-vaccinated, while some counties that were not hard-hit are highly vaccinated.
+
 ### How do vaccination levels and hesitancy differ by geographic region in the US?
 
 ```{r}
@@ -108,17 +122,3 @@ Because of our previous observations about the relationship between a county's p
 ```{r}
 make_svi_race_violinplot()
 ```
-
-### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
-
-```{r fig.align='center'}
-region_plots$deaths_fully_vax$us
-```
-
-This map is colored based on the ratio of deaths per 100,000 to vaccination rate rather than the cases per 100,000 to vaccination rate. While this is a rudimentary form of analysis, there do seem to some differences in the two ratios, especially in the mountainous states of the West, such as Idaho, Wyoming, and Utah. Specifically, those states had a much lower ratio of deaths to vaccinations relative to their cases to vaccinations ratio, which might suggest that in those areas there might be some correlation, although there is nothing definitive. To further analyze this possibility, we plotted deaths per county versus vaccination rate:
-
-```{r}
-plot_deaths_pc_vaccine()
-```
-
-This chart suggests that there is no relationship between the severity of the pandemic and residents' decisions to get vaccinated. Even some counties where close to 1-in-100 residents died from Covid are extremely under-vaccinated, while some counties that were not hard-hit are highly vaccinated.
