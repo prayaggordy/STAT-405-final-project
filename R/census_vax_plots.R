@@ -1,5 +1,3 @@
-library(tidyr); library(dplyr); library(tidycensus); library(stringr); library(tigris)
-
 plot_vax_by_region <- function(df = vax_today,
 															 xwalk = xwalk_region,
 															 fips = fips_codes) {

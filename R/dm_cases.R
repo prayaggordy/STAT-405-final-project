@@ -1,7 +1,3 @@
-library(magrittr)
-
-config <- yaml::read_yaml("config.yaml")
-
 download_nyt <- function(u = config$urls$nyt_covid,
 												 fn = config$data$nyt_covid,
 												 path_raw = config$paths$raw,

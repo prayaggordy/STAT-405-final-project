@@ -1,3 +1,6 @@
+libraries: ["magrittr", "RSQLite", "tidyverse", "tidycensus", "tigris", "knitr",
+            "kableExtra", "broom", "MASS", "grid", "gridExtra"]
+
 paths:
   raw: "data/raw/"
   proc: "data/processed/"

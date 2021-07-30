@@ -1,6 +1,3 @@
-library(tidycensus); library(tidyverse); library(magrittr); library(dplyr)
-library(tidyr); library(readr); library(tibble)
-
 dm_xwalk_fips <- function() {
 	tigris::fips_codes %>%
 		dplyr::mutate(county_short_lc = gsub(" County", "", county) %>% tolower(),

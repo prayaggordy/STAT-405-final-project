@@ -1,7 +1,3 @@
-library(ggplot2); library(RSQLite); library(yaml); library(MASS); library(grid); library(gridExtra); library(dplyr); library(magrittr)
-config <- read_yaml("config.yaml")
-
-
 make_df_for_sviplot <- function(df_hes = vaccine_hesitancy,
 																df_vax = vax_today) {
 

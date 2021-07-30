@@ -1,10 +1,3 @@
-library(knitr)
-library(kableExtra)
-library(purrr)
-library(broom)
-library(dplyr)
-library(magrittr)
-
 get_kable <- function(ttest) {
 	map_df(list(ttest), broom::tidy) %>%
 		dplyr::select(`Difference in Means` = estimate,
