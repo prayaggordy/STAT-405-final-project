@@ -35,6 +35,7 @@ urls:
   cdc_vacc: "https://data.cdc.gov/api/views/8xkx-amqh/rows.csv?accessType=DOWNLOAD"
   tex_vacc: "https://www.dshs.texas.gov/immunize/covid19/COVID-19-Vaccine-Data-by-County.xls"
   va_vacc: "https://data.virginia.gov/api/views/28k2-x2rj/rows.csv?accessType=DOWNLOAD"
+  vacc_hes: "https://data.cdc.gov/api/views/q9mh-h2tw/rows.csv?accessType=DOWNLOAD"
 
 census:
   vars: {med_income: "B19013_001", male: "B01001_002",
