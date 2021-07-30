@@ -2,16 +2,16 @@
 
 ### Summary of findings
 
-1. Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest, while the South and West are lagging behind the rest of the country in vaccination levels.
-1. Counties in the South were more likely to have higher ratios of deaths per 100,000 people to vaccination rates than were counties in the Northeast, Midwest, or West.
-1. While much of the South exhibited high levels of vaccine hesitancy and much of the Northeast exhibited very low levels of vaccine hesitancy, inversely mirroring the trends in vaccination levels as expected, Texas had surprisingly low levels of vaccine hesitancy, and some other states also exhibited unexpected trends.
-1. Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
-1. The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
-1. The percentage of a county's votes in the 2020 presidential election cast for Trump was negatively correlated with the county's vaccination levels.
-1. Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
-1. For Democratic counties in which Black residents make up more than 5% of the population, vaccine hesitancy was positively correlated with race.
-1. Very High, High, or Moderate Vulnerability counties (by SVI) with very low vaccination rates (<15%) were much more likely to have higher percentage Black populations than their higher vaccination counterparts with the same SVI values, while the difference between very low vaccination rate counties and their more vaccinated counterparts among Low and Very Low Vulnerability counties was far less pronounced.
-1. Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates.
+1. Among broad geographic regions of the nation, the Northeast has highest mean vaccination and tightest distribution, followed by the Midwest and West, while the South is lagging significantly behind the rest of the country in vaccination levels.
+2. Counties in the South were more likely to have higher ratios of cases and deaths per 100,000 people to vaccination rates than were counties in the Northeast, Midwest, or West, suggesting that severity and vaccination levels might not be positively correlated or correlated at all.
+3. Generally, much of the South exhibited high levels of vaccine hesitancy and much of the Northeast exhibited very low levels of vaccine hesitancy, inversely mirroring the trends in vaccination levels as expected. However, Texas had surprisingly low levels of vaccine hesitancy, as did Nebraska, Utah, and the Dakotas.
+4. Counties in more vulnerable SVI categories had, on average, lower vaccination rates, and this difference was statistically significant.
+5. The distribution of vaccination rates among counties in vulnerable SVI categories had a small peak at very low vaccination rates, indicating the possible existence of a subgroup of vulnerable counties in which vaccination rates are controlled by another factor.
+6. The percentage of a county's votes in the 2020 presidential election cast for Trump was negatively correlated with the county's vaccination levels.
+7. Among outlier counties in which vaccination levels were not well-predicted by political leanings, outliers with lower-than-predicted vaccination levels had higher average proportion Black populations than outliers with higher-than-predicted vaccination levels of the same political leaning and were more likely to have larger Black populations.
+8. For Democratic counties in which Black residents make up more than 5% of the population, vaccine hesitancy was positively correlated with race.
+9. Very High, High, or Moderate Vulnerability counties (by SVI) with very low vaccination rates (<15%) were much more likely to have higher percentage Black populations than their higher vaccination counterparts with the same SVI values, while the difference between very low vaccination rate counties and their more vaccinated counterparts among Low and Very Low Vulnerability counties was far less pronounced.
+10. Counties hit harder by the pandemic (counties with large numbers of cumulative deaths per 100,000 residents) do not seem to have significantly higher vaccination rates.
 
 ### Analysis and Recommendations
 
@@ -32,3 +32,7 @@ Unfortunately, these results are unsurprising and echo other reports. In a surve
 Stronger outreach to vulnerable and historically mistreated communities is a key tool in vaccinating the American public.
 
 ##### Region
+
+Ultimately, our analysis of ratios of case and death rates to vaccination levels, as well as of just vaccination levels and hesitancy, suggests that there is clearly some relationship between region and these data. Throughout the analysis, we see that the South has much worse ratio values than the rest of the country, especially as compared to the Northeast. Additionally, while the South and Northeast were at opposite ends of the spectrum, the Midwest and West exhibited far more middle-of-the-road ratio values and had a wide range of vaccination and ratio levels across counties. 
+
+While it may be tempting to then say geography is a strong determining factor in predicting these ratios and levels, it is in fact incorrect to do so. While there certainly seems to be a correlation, we know that geography is closely related to race and vulnerability levels, and especially to political views. As such, we cannot say just from looking at a regional analysis that geography by itself is an important factor rather than an indicator of the presence of another variable property that might in fact be the real reason or a more important reason for certain trends in the data.
