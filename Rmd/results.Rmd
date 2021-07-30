@@ -24,6 +24,7 @@ The map shows a county-level breakdown of the proportion of the population that 
 ```{r fig.align='center'}
 region_plots$cases_fully_vax$us
 ```
+
 This map is colored on a gradient based on the ratio of cases per 100k to the full vaccination percentage. In order to do this, we created a cases/100k variable using a combination of case and census data and then a ratio variable using the cases/100k and the fully vaccinated proportion.
 
 We believed that this variable would be interesting in that it highlights the counties with either high case rates, low vaccination rate, or both. This map suggests that, once again, the South exhibits a much higher (worse) ratio of cases per 100k to vaccination proportion than the rest of the country, while the Northeast is the opposite, with a very low (better) proportion of cases to vaccinations. What is interesting in this map is that most of the West and Midwest also exhibits low ratios. In combination with the previous maps, this suggests that those areas are more average in both cases per 100k and vaccination rate, or have vaccination rates that reflect how bad the pandemic was in the county.
@@ -98,9 +99,9 @@ plot_vacches_race()
 
 #### What are the racial demographics of high SVI counties with low vaccination rates?
 Because of our previous observations about the relationship between a county's proportion Black residents and its levels of vaccination and vaccine hesitancy, we hypothesized that the group of high SVI counties with especially low vaccination rates that we observed in the histograms of vaccination levels for counties in differing SVI categories might consist of counties with large Black populations. We assessed this theory by constructing two sets of violin plots showing distributions of percent Black residents based on SVI category and vaccination levels. The first set of violin plots shows counties in the "Very High" "High" or "Moderate" SVI categories and compares low vaccination counties (less than 15% vaccinated) versus all other counties, while the second set shows the same comparison but for "Low" or "Very Low" SVI categories. While the low vulnerability counties show similar distributions of percent Black residents for both the low and the high vaccination rate groups, for high vulnerability counties, the distribution is strikingly skewed towards more Black residents for the low vaccination rate counties in comparison with the high vaccination rate counties.
+
 ```{r}
-make_svi_race_violinplot(1, 0.4)
-make_svi_race_violinplot(0.39, 0)
+make_svi_race_violinplot()
 ```
 
 ### Did the severity of the pandemic within a county affect residents' desire to get vaccinated?
